@@ -1,9 +1,10 @@
 # node-red-contrib-zeebe
 Zeebe nodes for Node-RED
 
-This module will provide the following Zeebe nodes for Node-RED:
+This module integrates the Zeebe Node.js Client https://creditsenseau.github.io/zeebe-client-node-js/index.html.
+It will provide the following Zeebe nodes for Node-RED:
 
-### createTaskworker
+### createTaskWorker
 Creates a task worker and subscribes to specific tasks/jobs. This node outputs a Node-RED message for each newly received task/job.
 * inputs: 0
 * outputs: 1
