@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('workflow-instance',{
+        category: 'zeebe',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            zeebe: {required: true, type: "zeebe"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"workflow-instance";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="workflow-instance">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-zeebe"><i class="icon-tag"></i> Zeebe Broker</label>
+        <input type="text" id="node-input-zeebe" placeholder="Zeebe Broker" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="workflow-instance">
+    <p>When a Node-RED message is received at the input, a new workflow instance gets started in Zeebe. When the workflow instance has been created, the output send a Node-RED message containing information like the workflowInstanceKey.</p>
+</script>

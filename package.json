@@ -1,0 +1,31 @@
+{
+  "name": "node-red-contrib-zeebe",
+  "version": "0.0.1",
+  "description": "Zeebe nodes for Node-RED ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedesen/node-red-contrib-zeebe.git"
+  },
+  "author": "pedesen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedesen/node-red-contrib-zeebe/issues"
+  },
+  "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
+  "dependencies": {
+    "zeebe-node": "^0.20.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0"
+  },
+  "node-red" : {
+    "nodes": {
+        "workflow-instance": "nodes/workflow-instance.js",
+        "zeebe": "nodes/zeebe.js"
+    }
+  }
+}
