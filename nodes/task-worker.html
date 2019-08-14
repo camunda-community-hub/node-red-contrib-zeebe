@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('task-worker',{
+        category: 'zeebe',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ""},
+            zeebe: {required: true, type: "zeebe"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"task-worker";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="task-worker">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-zeebe"><i class="icon-tag"></i> Zeebe Broker</label>
+        <input type="text" id="node-input-zeebe" placeholder="Zeebe Broker" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="task-worker">
+    <p>Creates a task worker and subscribes to specific tasks/jobs. This node outputs a Node-RED message for each newly received task/job.</p>
+</script>

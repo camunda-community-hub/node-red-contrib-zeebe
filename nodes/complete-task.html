@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    RED.nodes.registerType('complete-task',{
+        category: 'zeebe',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ""},
+            zeebe: {required: true, type: "zeebe"}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "file.png",
+        label: function() {
+            return this.name||"complete-task";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="complete-task">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="complete-task">
+    <p>When a Node-RED message is received at the input, this node completes a specific Zeebe task/job (with either success or failure).</p>
+</script>

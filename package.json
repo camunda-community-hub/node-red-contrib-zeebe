@@ -25,6 +25,8 @@
   "node-red" : {
     "nodes": {
         "workflow-instance": "nodes/workflow-instance.js",
+        "task-worker": "nodes/task-worker.js",
+        "complete-task": "nodes/complete-task.js",
         "zeebe": "nodes/zeebe.js"
     }
   }
