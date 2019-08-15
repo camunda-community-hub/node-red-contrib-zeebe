@@ -17,17 +17,19 @@
   },
   "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
   "dependencies": {
+    "uuid": "^3.3.2",
     "zeebe-node": "^0.20.1"
   },
   "devDependencies": {
     "eslint": "^6.1.0"
   },
-  "node-red" : {
+  "node-red": {
     "nodes": {
-        "workflow-instance": "nodes/workflow-instance.js",
-        "task-worker": "nodes/task-worker.js",
-        "complete-task": "nodes/complete-task.js",
-        "zeebe": "nodes/zeebe.js"
+      "zeebe": "nodes/zeebe.js",
+      "workflow-instance": "nodes/workflow-instance.js",
+      "task-worker": "nodes/task-worker.js",
+      "complete-task": "nodes/complete-task.js",
+      "publishMessage": "nodes/publish-message.js"
     }
   }
 }
