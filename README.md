@@ -19,6 +19,11 @@ When a Node-RED message is received at the input, this node completes a specific
 
 When a Node-RED message is received at the input, this node publishes a message to Zeebe.
 
+### publish-start-message
+![publish-start-message node](docs/publish-start-message.png)
+
+When a Node-RED message is received at the input, this node publishes a start message to Zeebe. No correlation key needed.
+
 ### workflow-instance
 ![workflow-instance node](docs/workflow-instance.png)
 

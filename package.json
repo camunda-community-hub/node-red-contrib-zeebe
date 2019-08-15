@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-zeebe",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Zeebe nodes for Node-RED ",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
       "workflow-instance": "nodes/workflow-instance.js",
       "task-worker": "nodes/task-worker.js",
       "complete-task": "nodes/complete-task.js",
-      "publishMessage": "nodes/publish-message.js"
+      "publish-message": "nodes/publish-message.js",
+      "publish-start-message": "nodes/publish-start-message.js"
     }
   }
 }
