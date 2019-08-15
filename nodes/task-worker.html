@@ -27,15 +27,15 @@
 </script>
 
 <script type="text/x-red" data-help-name="task-worker">
-    <p>Creates a task worker and subscribes to specific tasks/jobs. This node outputs a Node-RED message for each newly received task/job.</p>
+    <p>Creates a task worker and subscribes to specific task type. This node outputs a Node-RED message for each newly received job.</p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload</dt>
         <dd>Triggers the creation of a Zeebe task worker.</dd>
 
-        <dt>payload.name <span class="property-type">string</span></dt>
-        <dd>Task name</dd>
+        <dt>payload.type <span class="property-type">string</span></dt>
+        <dd>Task type</dd>
 
         <dt>payload.worker<span class="property-type">string</span></dt>
         <dd>Worker name</dd>

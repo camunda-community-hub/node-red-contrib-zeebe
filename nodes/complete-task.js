@@ -4,9 +4,9 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
         node.on('input', async function(msg) {
-            const {complete} = msg.payload;
+            const {complete, variables} = msg.payload;
             
-            complete();
+            complete(variables);
         });
     }
     RED.nodes.registerType("complete-task", CompleteTask);

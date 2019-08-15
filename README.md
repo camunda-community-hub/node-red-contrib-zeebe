@@ -2,7 +2,7 @@
 Zeebe nodes for Node-RED
 
 This module integrates the Zeebe Node.js Client https://creditsenseau.github.io/zeebe-client-node-js/index.html.
-It will provide the following Zeebe nodes for Node-RED:
+It provides the following Zeebe nodes for Node-RED:
 
 ### task-worker
 ![task-worker node](docs/task-worker.png)
