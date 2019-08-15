@@ -6,6 +6,13 @@ module.exports = function(RED) {
         this.host = n.host;
         this.port = n.port;
         this.zbc = new ZB.ZBClient(`${this.host}:${this.port}`);
+
+        this.on('close', function(done) {
+            return this.zbc.close().then(() => {
+                console.log("All workers closed");
+                done();
+            })
+        });
     }
     RED.nodes.registerType("zeebe", Zeebe);
 }
