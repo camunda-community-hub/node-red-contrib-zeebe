@@ -20,6 +20,7 @@
     "uuid": "^3.3.2",
     "zeebe-node": "^0.20.1"
   },
+  "keywords": [ "node-red", "zeebe", "javascript", "microservice" ],
   "devDependencies": {
     "eslint": "^6.1.0"
   },
