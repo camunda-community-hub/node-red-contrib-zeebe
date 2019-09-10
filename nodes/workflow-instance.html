@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('workflow-instance',{
         category: 'zeebe',
-        color: '#058ebc',
+        color: '#C0DEED',
         defaults: {
             name: {value:""},
             zeebe: {required: true, type: "zeebe"}
@@ -10,8 +10,9 @@
         outputs:1,
         icon: "zeebe.png",
         label: function() {
-            return this.name||"workflow-instance";
-        }
+            return this.name||"create wfi";
+        },
+        paletteLabel: 'create wfi'
     });
 </script>
 
@@ -27,12 +28,12 @@
 </script>
 
 <script type="text/x-red" data-help-name="workflow-instance">
-    <p>When a Node-RED message is received at the input, a new workflow instance gets started in Zeebe. When the workflow instance has been created, the output send a Node-RED message containing information like the workflowInstanceKey.</p>
+    <p>When a Node-RED message is received at the input, a new workflow instance is created in Zeebe. When the workflow instance has been created, the output send a Node-RED message containing information like the workflowInstanceKey.</p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload</dt>
-        <dd>Triggers the start of a Zeebe workflow instance.</dd>
+        <dd>Creates a Zeebe workflow instance.</dd>
 
         <dt>payload.workflowName <span class="property-type">string</span></dt>
         <dd>Task name</dd>

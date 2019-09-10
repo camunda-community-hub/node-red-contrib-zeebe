@@ -10,7 +10,7 @@
             clientSecret: { value: '', required: false },
         },
         label: function () {
-            return this.name || "zeebe"
+            return this.name || this.contactPoint || "zeebe"
         }
     });
 </script>

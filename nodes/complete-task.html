@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('complete-task',{
         category: 'zeebe',
-        color: '#058ebc',
+        color: '#C0DEED',
         defaults: {
             name: {value: ""}
         },
@@ -9,8 +9,9 @@
         outputs:0,
         icon: "zeebe.png",
         label: function() {
-            return this.name||"complete-task";
-        }
+            return this.name || "complete-task";
+        },
+        paletteLabel: 'complete'
     });
 </script>
 

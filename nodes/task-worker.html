@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('task-worker',{
         category: 'zeebe',
-        color: '#058ebc',
+        color: '#C0DEED',
         defaults: {
             name: {value: ""},
             zeebe: {required: true, type: "zeebe"}
@@ -10,8 +10,9 @@
         outputs:1,
         icon: "zeebe.png",
         label: function() {
-            return this.name||"task-worker";
-        }
+            return this.name || "worker";
+        },
+        paletteLabel: 'worker'
     });
 </script>
 

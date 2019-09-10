@@ -1,4 +1,3 @@
-
 module.exports = function(RED) {
     function CompleteTask(config) {
         RED.nodes.createNode(this, config);
