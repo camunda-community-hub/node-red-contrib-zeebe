@@ -1,37 +1,50 @@
 {
-  "name": "node-red-contrib-zeebe",
-  "version": "0.2.0",
-  "description": "Zeebe nodes for Node-RED ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pedesen/node-red-contrib-zeebe.git"
-  },
-  "author": "pedesen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pedesen/node-red-contrib-zeebe/issues"
-  },
-  "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
-  "dependencies": {
-    "uuid": "^3.3.2",
-    "zeebe-node": "^0.20.1"
-  },
-  "keywords": [ "node-red", "zeebe", "javascript", "microservice" ],
-  "devDependencies": {
-    "eslint": "^6.1.0"
-  },
-  "node-red": {
-    "nodes": {
-      "zeebe": "nodes/zeebe.js",
-      "workflow-instance": "nodes/workflow-instance.js",
-      "task-worker": "nodes/task-worker.js",
-      "complete-task": "nodes/complete-task.js",
-      "publish-message": "nodes/publish-message.js",
-      "publish-start-message": "nodes/publish-start-message.js"
+    "name": "node-red-contrib-zeebe",
+    "version": "0.3.0",
+    "description": "Zeebe nodes for Node-RED ",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pedesen/node-red-contrib-zeebe.git"
+    },
+    "author": "pedesen",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pedesen/node-red-contrib-zeebe/issues"
+    },
+    "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
+    "dependencies": {
+        "uuid": "^3.3.2",
+        "zeebe-node": "^0.20.3"
+    },
+    "keywords": [
+        "node-red",
+        "zeebe",
+        "camunda",
+        "bpmn",
+        "workflow",
+        "microservice"
+    ],
+    "devDependencies": {
+        "eslint": "^6.1.0"
+    },
+    "node-red": {
+        "nodes": {
+            "zeebe": "nodes/zeebe.js",
+            "workflow-instance": "nodes/workflow-instance.js",
+            "task-worker": "nodes/task-worker.js",
+            "complete-task": "nodes/complete-task.js",
+            "publish-message": "nodes/publish-message.js",
+            "publish-start-message": "nodes/publish-start-message.js"
+        }
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
     }
-  }
 }
