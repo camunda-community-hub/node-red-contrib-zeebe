@@ -1,23 +1,44 @@
 <script type="text/javascript">
-    RED.nodes.registerType('zeebe',{
+    RED.nodes.registerType('zeebe', {
         category: 'config',
         defaults: {
-            host: {value: "localhost", required: true},
-            port: {value: 26500, required: true, validate:RED.validators.number()}
+            name: { value: '' },
+            contactPoint: { value: "<YOUR_CLUSTER_ID>.zeebe.camunda.io:443", required: true },
+            useTls: { value: true, required: false },
+            oAuthUrl: { value: 'https://login.cloud.camunda.io/oauth/token', required: false },
+            clientId: { value: '', required: false },
+            clientSecret: { value: '', required: false },
         },
-        label: function() {
-            return this.host+":"+this.port;
+        label: function () {
+            return this.name || "zeebe"
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="zeebe">
     <div class="form-row">
-        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
-        <input type="text" id="node-config-input-host">
+        <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-contactPoint"><i class="fa fa-server"></i> Contact Point</label>
+        <input type="text" id="node-config-input-contactPoint">
     </div>
     <div class="form-row">
-        <label for="node-config-input-port"><i class="icon-bookmark"></i> Port</label>
-        <input type="text" id="node-config-input-port">
+        <label for="node-config-input-useTls"><i class="fa fa-lock"></i> Use TLS</label>
+        <input type="checkbox" id="node-config-input-useTls">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-oAuthUrl"><i class="fa fa-sign-in"></i> OAuth URL</label>
+        <input type="text" id="node-config-input-oAuthUrl" placeholder="optional">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-clientId"><i class="fa fa-id-card-o"></i> Client ID</label>
+        <input type="text" id="node-config-input-clientId" placeholder="optional">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-clientSecret"><i class="fa fa-key"></i> Client Secret</label>
+        <input type="text" id="node-config-input-clientSecret" placeholder="optional">
     </div>
 </script>
