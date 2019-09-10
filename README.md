@@ -6,30 +6,30 @@ This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-cli
 
 ### task-worker
 
-![task-worker node](docs/task-worker.png)
+![task-worker node](docs/worker.png)
 
 Creates a task worker and subscribes to specific tasks/jobs. This node outputs a Node-RED message for each newly received task/job.
 
 ### complete-task
 
-![complete-task node](docs/complete-task.png)
+![complete-task node](docs/complete.png)
 
 When a Node-RED message is received at the input, this node completes a specific Zeebe task/job (with either success or failure).
 
 ### publish-message
 
-![publish-message node](docs/publish-message.png)
+![publish-message node](docs/pub-msg.png)
 
 When a Node-RED message is received at the input, this node publishes a message to Zeebe.
 
 ### publish-start-message
 
-![publish-start-message node](docs/publish-start-message.png)
+![publish-start-message node](docs/pub-start-msg.png)
 
 When a Node-RED message is received at the input, this node publishes a start message to Zeebe. No correlation key needed.
 
 ### workflow-instance
 
-![workflow-instance node](docs/workflow-instance.png)
+![workflow-instance node](docs/create-wfi.png)
 
 When a Node-RED message is received at the input, a new workflow instance gets started in Zeebe. Once the workflow instance has been created, the output sends a Node-RED message containing some meta-info, i.e. the workflowInstanceKey.
