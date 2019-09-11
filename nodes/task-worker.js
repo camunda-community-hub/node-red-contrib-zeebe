@@ -1,12 +1,12 @@
-
 module.exports = function(RED) {
     function TaskWorker(config) {
-        RED.nodes.createNode(this,config);
-        var node = this;
+        RED.nodes.createNode(this, config);
+        const node = this;
+
         node.on('input', async function(msg) {
             this.zbc = RED.nodes.getNode(config.zeebe).zbc;
-            const {worker, type} = msg.payload;
-            
+            const { worker, type } = msg.payload;
+
             function handler(job, complete) {
                 msg.payload.job = job;
                 msg.payload.complete = complete;
@@ -16,5 +16,5 @@ module.exports = function(RED) {
             const zbWorker = this.zbc.createWorker(worker, type, handler);
         });
     }
-    RED.nodes.registerType("task-worker", TaskWorker);
-}
+    RED.nodes.registerType('task-worker', TaskWorker);
+};
