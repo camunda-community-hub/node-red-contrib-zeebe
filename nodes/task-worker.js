@@ -8,15 +8,24 @@ module.exports = function(RED) {
         const zbc = RED.nodes.getNode(config.zeebe).zbc;
 
         const handler = (job, complete) => {
-            msg.payload.job = job;
-            msg.payload.complete = complete;
-            node.send(msg);
+            console.log();
+            node.send({
+                payload: {
+                    job,
+                    complete,
+                },
+            });
         };
 
-        const workerOptions = {
-            maxActiveJobs: config.maxActiveJobs,
-            timeout: config.timeout,
-        };
+        const workerOptions = {};
+
+        if (config.maxActiveJobs !== '') {
+            workerOptions.maxActiveJobs = config.maxActiveJobs;
+        }
+
+        if (config.timeout !== '') {
+            workerOptions.timeout = config.timeout;
+        }
 
         const onConnectionError = err => {
             status.error(node, err);

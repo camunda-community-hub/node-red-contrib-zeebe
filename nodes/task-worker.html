@@ -1,4 +1,7 @@
 <script type="text/javascript">
+    function validate(value) {
+        return value === '' || RED.validators.number()(value);
+    }
     RED.nodes.registerType('task-worker', {
         category: 'zeebe',
         color: '#C0DEED',
@@ -6,16 +9,16 @@
             name: { value: '' },
             zeebe: { required: true, type: 'zeebe' },
             taskType: { required: true },
-            maxActiveJobs: { value: 32, required: true, validate: RED.validators.number() },
-            timeout: { value: 1000, required: true, validate: RED.validators.number() }
+            maxActiveJobs: { value: 32, validate },
+            timeout: { value: 1000, validate },
         },
         inputs: 0,
         outputs: 1,
         icon: 'zeebe.png',
-        label: function () {
+        label: function() {
             return this.name || 'worker';
         },
-        paletteLabel: 'worker'
+        paletteLabel: 'worker',
     });
 </script>
 
