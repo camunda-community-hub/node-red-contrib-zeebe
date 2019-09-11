@@ -1,16 +1,16 @@
 <script type="text/javascript">
-    RED.nodes.registerType('workflow-instance',{
+    RED.nodes.registerType('workflow-instance', {
         category: 'zeebe',
         color: '#C0DEED',
         defaults: {
-            name: {value:""},
-            zeebe: {required: true, type: "zeebe"}
+            name: { value: "" },
+            zeebe: { required: true, type: "zeebe" }
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         icon: "zeebe.png",
-        label: function() {
-            return this.name||"create wfi";
+        label: function () {
+            return this.name || "create wfi";
         },
         paletteLabel: 'create wfi'
     });
@@ -22,7 +22,7 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-zeebe"><i class="icon-tag"></i> Zeebe Broker</label>
+        <label for="node-input-zeebe"><i class="fa fa-server"></i> Zeebe Broker</label>
         <input type="text" id="node-input-zeebe" placeholder="Zeebe Broker" />
     </div>
 </script>
