@@ -1,17 +1,17 @@
 <script type="text/javascript">
-    RED.nodes.registerType('complete-task',{
+    RED.nodes.registerType('complete-task', {
         category: 'zeebe',
         color: '#C0DEED',
         defaults: {
-            name: {value: ""}
+            name: { value: '' },
         },
-        inputs:1,
-        outputs:0,
-        icon: "zeebe.png",
+        inputs: 1,
+        outputs: 0,
+        icon: 'zeebe.png',
         label: function() {
-            return this.name || "complete";
+            return this.name || 'complete';
         },
-        paletteLabel: 'complete'
+        paletteLabel: 'complete',
     });
 </script>
 
@@ -30,13 +30,17 @@
     <dl class="message-properties">
         <dt>payload.complete <span class="property-type">function</span></dt>
         <dd>A function from a <code>task-worker</code> which completes the corresponding task.</dd>
+
+        <dt>payload.variables <span class="property-type">object</span></dt>
+        <dd>Message variables as JSON object</dd>
+
+        <dt>payload.type <span class="property-type">string</span></dt>
+        <dd>Complete type. Can be either "success" or "failure". Defaults to "success"</dd>
+
+        <dt>payload.failureMessage <span class="property-type">string</span></dt>
+        <dd>Failure message, that will be returned to zeebe in case the complete type is "failure"</dd>
     </dl>
 
-    <dl class="message-properties">
-        <dt>payload.variables <span class="property-type">objject</span></dt>
-        <dd>Message variables as JSON object</dd>
-    </dl>
-    
     <h3>References</h3>
     <ul>
         <li>Zeebe docs: <a href="https://docs.zeebe.io/basics/job-workers.html">Job Workers</a></li>

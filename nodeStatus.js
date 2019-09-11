@@ -15,6 +15,14 @@ module.exports = {
         });
     },
 
+    warning: function(node, failureMessage) {
+        node.status({
+            fill: 'yellow',
+            shape: 'dot',
+            text: failureMessage,
+        });
+    },
+
     clear: function(node) {
         node.status({});
     },
