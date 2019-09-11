@@ -5,6 +5,7 @@
             name: { value: '' },
             contactPoint: { value: "<YOUR_CLUSTER_ID>.zeebe.camunda.io:443", required: true },
             useTls: { value: true, required: false },
+            useLongpoll: { value: true, required: false },
             oAuthUrl: { value: 'https://login.cloud.camunda.io/oauth/token', required: false },
             clientId: { value: '', required: false },
             clientSecret: { value: '', required: false },
@@ -26,8 +27,12 @@
         <input type="text" id="node-config-input-contactPoint">
     </div>
     <div class="form-row">
-        <label for="node-config-input-useTls"><i class="fa fa-lock"></i> Use TLS</label>
+        <label for="node-config-input-useTls"><i class="fa fa-lock"></i> TLS</label>
         <input type="checkbox" id="node-config-input-useTls">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-useLongpoll"><i class="fa fa-lock"></i> Long Polling</label>
+        <input type="checkbox" id="node-config-input-useLongpoll">
     </div>
     <div class="form-row">
         <label for="node-config-input-oAuthUrl"><i class="fa fa-sign-in"></i> OAuth URL</label>

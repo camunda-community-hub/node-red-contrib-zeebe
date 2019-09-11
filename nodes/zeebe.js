@@ -17,11 +17,20 @@ module.exports = function(RED) {
             },
         };
 
+        if (config.useLongpoll) {
+            options.longPoll = 600000;
+        }
+
         if (config.oAuthUrl === '') {
             delete options.oAuth;
         }
 
-        node.zbc = new ZB.ZBClient(config.contactPoint, options);
+        try {
+            console.log('CREATING ZEEBE CLIENT');
+            node.zbc = new ZB.ZBClient(config.contactPoint, options);
+        } catch (err) {
+            console.log('MY ERROR', err);
+        }
 
         node.on('close', function(done) {
             return node.zbc.close().then(() => {

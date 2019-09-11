@@ -1,16 +1,19 @@
 <script type="text/javascript">
-    RED.nodes.registerType('task-worker',{
+    RED.nodes.registerType('task-worker', {
         category: 'zeebe',
         color: '#C0DEED',
         defaults: {
-            name: {value: ""},
-            zeebe: {required: true, type: "zeebe"}
+            name: { value: '' },
+            zeebe: { required: true, type: 'zeebe' },
+            taskType: { required: true },
+            maxActiveJobs: { value: 32, required: true, validate: RED.validators.number() },
+            timeout: { value: 1000, required: true, validate: RED.validators.number() }
         },
-        inputs:1,
-        outputs:1,
-        icon: "zeebe.png",
-        label: function() {
-            return this.name || "worker";
+        inputs: 0,
+        outputs: 1,
+        icon: 'zeebe.png',
+        label: function () {
+            return this.name || 'worker';
         },
         paletteLabel: 'worker'
     });
@@ -22,25 +25,25 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-zeebe"><i class="icon-tag"></i> Zeebe Broker</label>
+        <label for="node-input-zeebe"><i class="fa fa-server"></i> Zeebe Broker</label>
         <input type="text" id="node-input-zeebe" placeholder="Zeebe Broker" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-taskType"><i class="fa fa-envelope"></i> Task Type</label>
+        <input type="text" id="node-input-taskType" placeholder="Task Type">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxActiveJobs"><i class="fa fa-arrows-v"></i> Max Active Jobs</label>
+        <input type="text" id="node-input-maxActiveJobs" placeholder="Max Active Jobs">
+    </div>
+    <div class="form-row">
+        <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout</label>
+        <input type="text" id="node-input-timeout" placeholder="Timeout (ms)">
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="task-worker">
     <p>Creates a task worker and subscribes to specific task type. This node outputs a Node-RED message for each newly received job.</p>
-
-    <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Triggers the creation of a Zeebe task worker.</dd>
-
-        <dt>payload.type <span class="property-type">string</span></dt>
-        <dd>Task type</dd>
-
-        <dt>payload.worker<span class="property-type">string</span></dt>
-        <dd>Worker name</dd>
-    </dl>
 
     <h3>Outputs</h3>
     <ol class="node-ports">
