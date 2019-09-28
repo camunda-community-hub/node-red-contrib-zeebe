@@ -14,7 +14,7 @@ module.exports = function(RED) {
                     complete.failure(failureMessage || '');
                     status.warning(node, failureMessage || 'Failure');
                 } else {
-                    complete(variables);
+                    complete.success(variables);
                     status.clear(node);
                 }
             } catch (err) {
