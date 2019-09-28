@@ -4,17 +4,14 @@ Zeebe nodes for Node-RED
 
 This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-client-node-js/index.html) client library to bring Zeebe awesomeness to Node-RED!
 
-### worker
+### worker / complete
 
-![task-worker node](docs/worker.png)
+![task-worker and complete node](docs/worker-complete.png)
 
-Creates a task worker and subscribes to specific tasks/jobs. This node outputs a Node-RED message for each newly received task/job.
+Creates a task worker and subscribes to specific tasks/jobs. The `worker` node outputs a Node-RED message for each newly received task/job.
+When a Node-RED message is received at the `complete` nodes's input, that task/job gets completed in Zeebe (with either success or failure).
 
-### complete
-
-![complete-task node](docs/complete.png)
-
-When a Node-RED message is received at the input, this node completes a specific Zeebe task/job (with either success or failure).
+Please note: These nodes only work in combination. Make sure, the complete object from the worker node output payload gets injected into the input of the complete node.
 
 ### pub msg
 
