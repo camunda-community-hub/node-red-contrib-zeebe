@@ -1,5 +1,7 @@
 # node-red-contrib-zeebe
 
+[![Build Status](https://travis-ci.com/pedesen/node-red-contrib-zeebe.svg?branch=master)](https://travis-ci.com/pedesen/node-red-contrib-zeebe)
+
 Zeebe nodes for Node-RED
 
 This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-client-node-js/index.html) client library to bring Zeebe awesomeness to Node-RED!
