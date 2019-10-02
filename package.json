@@ -4,7 +4,7 @@
     "description": "Zeebe nodes for Node-RED ",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest --forceExit --detectOpenHandles"
     },
     "repository": {
         "type": "git",
@@ -29,7 +29,10 @@
         "microservice"
     ],
     "devDependencies": {
-        "eslint": "^6.1.0"
+        "eslint": "^6.1.0",
+        "jest": "^24.9.0",
+        "node-red": "^0.20.8",
+        "node-red-node-test-helper": "^0.2.3"
     },
     "node-red": {
         "nodes": {
@@ -40,6 +43,9 @@
             "publish-message": "nodes/publish-message.js",
             "publish-start-message": "nodes/publish-start-message.js"
         }
+    },
+    "jest": {
+        "testEnvironment": "node"
     },
     "prettier": {
         "trailingComma": "es5",

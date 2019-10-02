@@ -8,7 +8,6 @@ module.exports = function(RED) {
         const zbc = RED.nodes.getNode(config.zeebe).zbc;
 
         const handler = (job, complete) => {
-            console.log();
             node.send({
                 payload: {
                     job,
