@@ -16,6 +16,8 @@ exports.ZBClient = jest.fn().mockImplementation(() => {
             // call the handler asynchronously right after ZBClient has been created
             setTimeout(() => handler(mockJob, mockComplete));
         },
+        publishMessage: jest.fn(),
+        publishStartMessage: jest.fn(),
         close: () => {},
     };
 });
