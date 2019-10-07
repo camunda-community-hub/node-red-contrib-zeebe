@@ -1,3 +1,15 @@
 language: node_js
 node_js:
-  - 10
+    - 10
+
+before_install:
+    - git clone https://github.com/zeebe-io/zeebe-docker-compose
+    - cd zeebe-docker-compose/broker-only
+    - docker-compose up -d
+    - sleep 10
+    - cd ..
+    - ./bin/zbctl status
+    - cd ..
+
+after_script:
+    - docker-compose down
