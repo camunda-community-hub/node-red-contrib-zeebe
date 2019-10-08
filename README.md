@@ -27,6 +27,14 @@ When a Node-RED message is received at the input, this node publishes a message 
 
 When a Node-RED message is received at the input, this node publishes a start message to Zeebe. No correlation key needed.
 
+### deploy
+
+![deploy node](docs/deploy.png)
+
+Inject a bpmn workflow definition string to the input of this node to deploy it to Zeebe.
+
+You can use the 'file in' node from Node-RED to read a bpmn file from disk, or get the workflow definition from anywhere you want.
+
 ### create wfi
 
 ![workflow-instance node](docs/create-wfi.png)
