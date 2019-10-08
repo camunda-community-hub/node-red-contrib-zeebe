@@ -26,7 +26,7 @@ module.exports = function(RED) {
         }
 
         try {
-            console.log('CREATING ZEEBE CLIENT');
+            //console.log('CREATING ZEEBE CLIENT');
             node.zbc = new ZB.ZBClient(config.contactPoint, options);
         } catch (err) {
             console.log('MY ERROR', err);

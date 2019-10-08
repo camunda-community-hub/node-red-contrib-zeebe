@@ -41,7 +41,8 @@
             "task-worker": "nodes/task-worker.js",
             "complete-task": "nodes/complete-task.js",
             "publish-message": "nodes/publish-message.js",
-            "publish-start-message": "nodes/publish-start-message.js"
+            "publish-start-message": "nodes/publish-start-message.js",
+            "deploy": "nodes/deploy.js"
         }
     },
     "jest": {

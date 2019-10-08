@@ -3,16 +3,16 @@
         category: 'zeebe',
         color: '#C0DEED',
         defaults: {
-            name: { value: "" },
-            zeebe: { required: true, type: "zeebe" }
+            name: { value: '' },
+            zeebe: { required: true, type: 'zeebe' },
         },
         inputs: 1,
         outputs: 1,
-        icon: "zeebe.png",
-        label: function () {
-            return this.name || "create wfi";
+        icon: 'zeebe.png',
+        label: function() {
+            return this.name || 'create wfi';
         },
-        paletteLabel: 'create wfi'
+        paletteLabel: 'create wfi',
     });
 </script>
 
@@ -32,9 +32,6 @@
 
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>payload</dt>
-        <dd>Creates a Zeebe workflow instance.</dd>
-
         <dt>payload.workflowName <span class="property-type">string</span></dt>
         <dd>Task name</dd>
 
