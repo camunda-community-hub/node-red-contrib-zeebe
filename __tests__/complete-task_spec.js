@@ -33,16 +33,18 @@ describe('complete-task node', () => {
         helper.load([completeTaskNode], flow, () => {
             const n1 = helper.getNode('n1');
 
+            completeMock.success.mockImplementation(() => {
+                expect(completeMock.success).toHaveBeenCalledTimes(1);
+                expect(completeMock.success).toHaveBeenCalledWith(variables);
+                done();
+            });
+
             n1.receive({
                 payload: {
                     complete: completeMock,
                     variables,
                 },
             });
-
-            expect(completeMock.success).toHaveBeenCalledTimes(1);
-            expect(completeMock.success).toHaveBeenCalledWith(variables);
-            done();
         });
     });
 
@@ -60,6 +62,14 @@ describe('complete-task node', () => {
 
             const n1 = helper.getNode('n1');
 
+            completeMock.failure.mockImplementation(() => {
+                expect(completeMock.failure).toHaveBeenCalledTimes(1);
+                expect(completeMock.failure).toHaveBeenCalledWith(
+                    failureMessage
+                );
+                done();
+            });
+
             n1.receive({
                 payload: {
                     complete: completeMock,
@@ -67,11 +77,6 @@ describe('complete-task node', () => {
                     failureMessage,
                 },
             });
-
-            expect(completeMock.failure).toHaveBeenCalledTimes(1);
-            expect(completeMock.failure).toHaveBeenCalledWith(failureMessage);
-
-            done();
         });
     });
 });

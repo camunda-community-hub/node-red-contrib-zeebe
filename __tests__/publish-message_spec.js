@@ -44,22 +44,25 @@ describe('publish-message node', () => {
                 },
             };
 
+            n1.zbc.publishMessage.mockImplementation(() => {
+                expect(n1.zbc.publishMessage).toHaveBeenCalledTimes(1);
+
+                const mockCallParams = n1.zbc.publishMessage.mock.calls[0][0];
+
+                expect(mockCallParams.name).toEqual(params.name);
+                expect(mockCallParams.correlationKey).toEqual(
+                    params.correlationKey
+                );
+                expect(mockCallParams.timeToLive).toEqual(params.timeToLive);
+                expect(mockCallParams.variables).toEqual(params.variables);
+                expect(mockCallParams.messageId).toEqual(expect.any(String));
+
+                done();
+            });
+
             n2.receive({
                 payload: params,
             });
-
-            expect(n1.zbc.publishMessage).toHaveBeenCalledTimes(1);
-
-            const mockCallParams = n1.zbc.publishMessage.mock.calls[0][0];
-
-            expect(mockCallParams.name).toEqual(params.name);
-            expect(mockCallParams.correlationKey).toEqual(
-                params.correlationKey
-            );
-            expect(mockCallParams.timeToLive).toEqual(params.timeToLive);
-            expect(mockCallParams.variables).toEqual(params.variables);
-            expect(mockCallParams.messageId).toEqual(expect.any(String));
-            done();
         });
     });
 });
