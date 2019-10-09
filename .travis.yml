@@ -3,11 +3,10 @@ node_js:
     - 10
 
 before_install:
-    - git clone https://github.com/zeebe-io/zeebe-docker-compose
-    - cd zeebe-docker-compose/broker-only
+    - cd resources
     - docker-compose up -d
+    - cd ..
     - sleep 10 # wait for zeebe to be ready
-    - cd ../..
 
 after_script:
     - docker-compose down
