@@ -6,10 +6,8 @@ before_install:
     - git clone https://github.com/zeebe-io/zeebe-docker-compose
     - cd zeebe-docker-compose/broker-only
     - docker-compose up -d
-    - sleep 5
-    - cd ..
-    - ./bin/zbctl status
-    - cd ..
+    - sleep 10 # wait for zeebe to be ready
+    - cd ../..
 
 after_script:
     - docker-compose down

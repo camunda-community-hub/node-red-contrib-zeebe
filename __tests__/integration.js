@@ -237,7 +237,7 @@ describe('integration', () => {
                                     correlationKey: processId,
                                 },
                             });
-                        }, 500);
+                        }, 1000);
                     });
                 });
 
