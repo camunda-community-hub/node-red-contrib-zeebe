@@ -18,7 +18,7 @@
     "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
     "dependencies": {
         "uuid": "^3.3.2",
-        "zeebe-node": "^0.20.6"
+        "zeebe-node": "^0.21.0"
     },
     "keywords": [
         "node-red",
