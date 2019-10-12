@@ -44,7 +44,10 @@ describe('deploy node', () => {
                 Promise.resolve().then(() => {
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledTimes(1);
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledWith(
-                        expect.stringContaining('.bpmn')
+                        expect.objectContaining({
+                            resourceName: expect.stringMatching(/^test.bpmn$/),
+                            definition: expect.any(Buffer),
+                        })
                     );
                     expect(msg.payload).toEqual({
                         workflows: [{ bpmnProcessId: 'my-process' }],
@@ -56,6 +59,7 @@ describe('deploy node', () => {
             n2.receive({
                 payload: {
                     definition: '<xml />',
+                    resourceName: 'test.bpmn',
                 },
             });
         });

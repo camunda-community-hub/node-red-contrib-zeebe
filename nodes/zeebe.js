@@ -1,3 +1,5 @@
+const logger = require('../util/logger');
+
 module.exports = function(RED) {
     const ZB = require('zeebe-node');
 
@@ -15,6 +17,14 @@ module.exports = function(RED) {
                 clientSecret: config.clientSecret,
                 cacheOnDisk: false,
             },
+            onReady: () => {
+                node.log('Connected');
+            },
+            onConnectionError: () => {
+                node.warn('Connection Error');
+            },
+            loglevel: 'ERROR',
+            stdout: logger(node),
         };
 
         if (config.useLongpoll) {
@@ -25,16 +35,11 @@ module.exports = function(RED) {
             delete options.oAuth;
         }
 
-        try {
-            //console.log('CREATING ZEEBE CLIENT');
-            node.zbc = new ZB.ZBClient(config.contactPoint, options);
-        } catch (err) {
-            console.log('MY ERROR', err);
-        }
+        node.zbc = new ZB.ZBClient(config.contactPoint, options);
 
         node.on('close', function(done) {
             return node.zbc.close().then(() => {
-                console.log('All workers closed');
+                node.log('All workers closed');
                 done();
             });
         });

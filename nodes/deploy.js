@@ -1,9 +1,6 @@
 const fs = require('fs');
-const uuid = require('uuid');
 
 module.exports = function(RED) {
-    const USER_DIR = RED.settings.userDir;
-
     function Deploy(config) {
         RED.nodes.createNode(this, config);
         const node = this;
@@ -11,32 +8,15 @@ module.exports = function(RED) {
         node.on('input', async function(msg) {
             this.zbc = RED.nodes.getNode(config.zeebe).zbc;
 
-            const resourceName =
-                msg.payload.resourceName || `${uuid.v4()}.bpmn`;
-            const definition = msg.payload.definition;
+            const { resourceName, definition } = msg.payload;
 
-            const path = `${USER_DIR}/${resourceName}`;
-
-            /**
-             * Temporarily store bpmn file to file system.
-             * This will be obsolete, when definition strings are allowed in zeebe-node
-             * https://github.com/creditsenseau/zeebe-client-node-js/issues/86
-             */
-            fs.writeFile(path, definition, 'utf8', async err => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    const res = await this.zbc.deployWorkflow(path);
-
-                    // remove bpmn file from file system
-                    fs.unlinkSync(path, err => {
-                        console.log(err);
-                    });
-
-                    msg.payload = res;
-                    node.send(msg);
-                }
+            const res = await this.zbc.deployWorkflow({
+                definition: Buffer.from(definition),
+                resourceName,
             });
+
+            msg.payload = res;
+            node.send(msg);
         });
     }
 

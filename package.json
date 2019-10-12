@@ -29,7 +29,7 @@
         "husky": "^3.0.8",
         "lint-staged": "^9.4.2",
         "uuid": "^3.3.2",
-        "zeebe-node": "^0.21.0"
+        "zeebe-node": "git://github.com/creditsenseau/zeebe-client-node-js.git#bf2eb3490ddf71063f5fa5821f608bd4da4c614a"
     },
     "devDependencies": {
         "eslint": "^6.1.0",
