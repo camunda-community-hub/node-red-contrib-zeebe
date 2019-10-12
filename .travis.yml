@@ -8,5 +8,7 @@ before_install:
     - cd ..
     - sleep 10 # wait for zeebe to be ready
 
+script: npm run test:integration
+
 after_script:
     - docker-compose down

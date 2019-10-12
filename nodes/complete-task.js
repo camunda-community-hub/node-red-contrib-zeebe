@@ -1,4 +1,4 @@
-const status = require('../nodeStatus');
+const status = require('../util/nodeStatus');
 
 module.exports = function(RED) {
     function CompleteTask(config) {

@@ -1,4 +1,4 @@
-const status = require('../nodeStatus');
+const status = require('../util/nodeStatus');
 const uuid = require('uuid');
 
 module.exports = function(RED) {

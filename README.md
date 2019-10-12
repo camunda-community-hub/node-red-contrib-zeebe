@@ -40,3 +40,38 @@ You can use the 'file in' node from Node-RED to read a bpmn file from disk, or g
 ![workflow-instance node](docs/create-wfi.png)
 
 When a Node-RED message is received at the input, a new workflow instance gets started in Zeebe. Once the workflow instance has been created, the output sends a Node-RED message containing some meta-info, i.e. the workflowInstanceKey.
+
+## Developing
+
+To test these nodes locally in node-red, the `npm install <folder>` command can be used. This allows you to develop the node in a local directory and have it linked into a local node-red install during development.
+
+In your node-red user directory, typically `~/.node-red`, run:
+
+```bash
+npm install <path to location of node-red-contrib-zeebe>
+```
+
+This creates the appropriate symbolic link to the directory so that Node-RED will discover the node when it starts. Any changes to the node’s file can be picked up by simply restarting Node-RED.
+
+### Tests
+
+Tests are written in Jest, and live in the `__tests__` directory. To run the unit tests:
+
+```bash
+npm test
+```
+
+Integration tests are in the `__tests__/integration.js` file.
+
+They require a Zeebe broker to run. You can start a dockerised broker:
+
+```bash
+cd resources
+docker-compose up
+```
+
+And then run them manually:
+
+```bash
+npm run test:integration
+```
