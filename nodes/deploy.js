@@ -11,15 +11,9 @@ module.exports = function(RED) {
         node.on('input', async function(msg) {
             this.zbc = RED.nodes.getNode(config.zeebe).zbc;
 
-            let resourceName, definition;
-
-            resourceName = msg.payload.resourceName || `${uuid.v4()}.bpmn`;
-
-            if (typeof msg.payload === 'string') {
-                definition = msg.payload;
-            } else {
-                definition = msg.payload.definition;
-            }
+            const resourceName =
+                msg.payload.resourceName || `${uuid.v4()}.bpmn`;
+            const definition = msg.payload.definition;
 
             const path = `${USER_DIR}/${resourceName}`;
 

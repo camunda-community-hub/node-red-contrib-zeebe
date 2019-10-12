@@ -54,7 +54,9 @@ describe('deploy node', () => {
             });
 
             n2.receive({
-                payload: '<xml >/',
+                payload: {
+                    definition: '<xml />',
+                },
             });
         });
     });

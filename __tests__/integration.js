@@ -128,7 +128,7 @@ describe('integration', () => {
 
                 // deploy workflow02
                 deployNode.receive({
-                    payload: workflow01,
+                    payload: { definition: workflow01 },
                 });
             }
         );
@@ -243,7 +243,7 @@ describe('integration', () => {
 
                 // deploy workflow02
                 deployNode.receive({
-                    payload: workflow02,
+                    payload: { definition: workflow02 },
                 });
             }
         );
