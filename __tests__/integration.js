@@ -13,7 +13,7 @@ const workflow01 = require('../resources/workflow01');
 const workflow02 = require('../resources/workflow02');
 
 jest.unmock('zeebe-node');
-jest.setTimeout(10000);
+jest.setTimeout(15000);
 
 helper.init(require.resolve('node-red'));
 
@@ -237,7 +237,7 @@ describe('integration', () => {
                                     correlationKey: processId,
                                 },
                             });
-                        }, 2000);
+                        }, 5000);
                     });
                 });
 
