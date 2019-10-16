@@ -27,7 +27,7 @@
     ],
     "dependencies": {
         "uuid": "^3.3.2",
-        "zeebe-node": "git://github.com/creditsenseau/zeebe-client-node-js.git#bf2eb3490ddf71063f5fa5821f608bd4da4c614a"
+        "zeebe-node": "^0.21.1"
     },
     "devDependencies": {
         "eslint": "^6.1.0",
