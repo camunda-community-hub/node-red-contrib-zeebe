@@ -15,7 +15,7 @@ module.exports = function(RED) {
                 audience: config.contactPoint.split(':')[0],
                 clientId: config.clientId,
                 clientSecret: config.clientSecret,
-                cacheOnDisk: false,
+                cacheOnDisk: true,
             },
             onReady: () => {
                 node.log('Connected');
