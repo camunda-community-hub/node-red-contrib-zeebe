@@ -29,6 +29,7 @@ module.exports = {
 };
 
 function formatErrorMsg(errorMsg) {
+    errorMsg = errorMsg || 'Unknown Error';
     let result = errorMsg.split(':')[0];
     if (result.length > 30) {
         result = result.substring(0, 30) + '...';
