@@ -39,13 +39,13 @@
     },
     "node-red": {
         "nodes": {
-            "zeebe": "nodes/zeebe.js",
-            "workflow-instance": "nodes/workflow-instance.js",
-            "task-worker": "nodes/task-worker.js",
-            "complete-task": "nodes/complete-task.js",
-            "publish-message": "nodes/publish-message.js",
-            "publish-start-message": "nodes/publish-start-message.js",
-            "deploy": "nodes/deploy.js"
+            "zeebe": "src/nodes/zeebe.js",
+            "workflow-instance": "src/nodes/workflow-instance.js",
+            "task-worker": "src/nodes/task-worker.js",
+            "complete-task": "src/nodes/complete-task.js",
+            "publish-message": "src/nodes/publish-message.js",
+            "publish-start-message": "src/nodes/publish-start-message.js",
+            "deploy": "src/nodes/deploy.js"
         }
     },
     "jest": {
@@ -63,7 +63,7 @@
         }
     },
     "lint-staged": {
-        "{nodes,util}/**/*.js": [
+        "src/**/*.js": [
             "prettier --write",
             "git add"
         ]

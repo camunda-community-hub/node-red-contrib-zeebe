@@ -3,12 +3,13 @@ node_js:
     - 10
 
 before_install:
-    - cd resources
+    - cd resources/travis
     - docker-compose up -d
-    - cd ..
+    - cd ../..
     - sleep 10 # wait for zeebe to be ready
 
 script: npm run test:integration
 
 after_script:
+    - cd resources/travis
     - docker-compose down

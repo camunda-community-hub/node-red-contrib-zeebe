@@ -1,5 +1,5 @@
 const helper = require('node-red-node-test-helper');
-const completeTaskNode = require('../nodes/complete-task.js');
+const completeTaskNode = require('../src/nodes/complete-task.js');
 
 helper.init(require.resolve('node-red'));
 

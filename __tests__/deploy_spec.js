@@ -1,6 +1,6 @@
 const helper = require('node-red-node-test-helper');
-const deployNode = require('../nodes/deploy.js');
-const zeebeNode = require('../nodes/zeebe');
+const deployNode = require('../src/nodes/deploy.js');
+const zeebeNode = require('../src/nodes/zeebe');
 
 helper.init(require.resolve('node-red'));
 

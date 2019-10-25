@@ -1,6 +1,6 @@
 const helper = require('node-red-node-test-helper');
-const publishMessageNode = require('../nodes/publish-message.js');
-const zeebeNode = require('../nodes/zeebe');
+const publishMessageNode = require('../src/nodes/publish-message.js');
+const zeebeNode = require('../src/nodes/zeebe');
 
 helper.init(require.resolve('node-red'));
 

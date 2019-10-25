@@ -1,16 +1,16 @@
 const uuid = require('uuid');
 const helper = require('node-red-node-test-helper');
 
-const zeebeNode = require('../nodes/zeebe');
-const taskWorkerNode = require('../nodes/task-worker');
-const deployNode = require('../nodes/deploy');
-const workflowInstanceNode = require('../nodes/workflow-instance');
-const completeTaskNode = require('../nodes/complete-task');
-const pubStartMsgNode = require('../nodes/publish-start-message');
-const pubMsgNode = require('../nodes/publish-message');
+const zeebeNode = require('../src/nodes/zeebe');
+const taskWorkerNode = require('../src/nodes/task-worker');
+const deployNode = require('../src/nodes/deploy');
+const workflowInstanceNode = require('../src/nodes/workflow-instance');
+const completeTaskNode = require('../src/nodes/complete-task');
+const pubStartMsgNode = require('../src/nodes/publish-start-message');
+const pubMsgNode = require('../src/nodes/publish-message');
 
-const workflow01 = require('../resources/workflow01');
-const workflow02 = require('../resources/workflow02');
+const workflow01 = require('../resources/tests/workflow01');
+const workflow02 = require('../resources/tests/workflow02');
 
 jest.unmock('zeebe-node');
 jest.setTimeout(10000);

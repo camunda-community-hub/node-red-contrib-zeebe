@@ -1,6 +1,6 @@
 const helper = require('node-red-node-test-helper');
-const taskWorkerNode = require('../nodes/task-worker.js');
-const zeebeNode = require('../nodes/zeebe');
+const taskWorkerNode = require('../src/nodes/task-worker.js');
+const zeebeNode = require('../src/nodes/zeebe');
 
 helper.init(require.resolve('node-red'));
 
