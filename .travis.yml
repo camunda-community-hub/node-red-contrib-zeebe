@@ -11,5 +11,6 @@ before_install:
 script: npm run test:integration
 
 after_script:
+    - docker logs zeebe_broker
     - cd resources/travis
     - docker-compose down

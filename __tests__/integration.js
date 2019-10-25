@@ -142,7 +142,7 @@ describe('integration', () => {
      * - publish a message
      * - complete a task
      */
-    it.skip('publish start message, publish message, complete task', (done) => {
+    it('publish start message, publish message, complete task', (done) => {
         var flow = [
             {
                 id: 'zeebe-node',
@@ -213,15 +213,19 @@ describe('integration', () => {
                 const processId = uuidv4();
 
                 // complete task
-                completeTaskNode.on('input', (msg) => {
+                completeTaskNode.on('input', msg => {
+                    console.log(new Date(), 'complete node input');
                     Promise.resolve().then(() => {
-                        done();
+                        console.log(new Date(), 'done');
+                        setTimeout(done, 1000);
                     });
                 });
 
-                n1.on('input', (msg) => {
+                n1.on('input', msg => {
+                    console.log(new Date(), 'n1 input');
                     Promise.resolve().then(() => {
                         // publish start message
+                        console.log(new Date(), 'pub start msg');
                         pubStartMsgNode.receive({
                             payload: {
                                 name: 'StartMessage',
@@ -231,10 +235,12 @@ describe('integration', () => {
 
                         setTimeout(() => {
                             // publish message
+                            console.log(new Date(), 'pub msg');
                             pubMsgNode.receive({
                                 payload: {
                                     name: 'Message',
                                     correlationKey: processId,
+                                    timeToLive: 0
                                 },
                             });
                         }, 20000);
