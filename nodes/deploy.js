@@ -1,4 +1,4 @@
-const fs = require('fs');
+const status = require('../util/nodeStatus');
 
 module.exports = function(RED) {
     function Deploy(config) {
@@ -10,13 +10,19 @@ module.exports = function(RED) {
 
             const { resourceName, definition } = msg.payload;
 
-            const res = await this.zbc.deployWorkflow({
-                definition: Buffer.from(definition),
-                resourceName,
-            });
+            try {
+                const res = await this.zbc.deployWorkflow({
+                    definition: Buffer.from(definition),
+                    resourceName,
+                });
 
-            msg.payload = res;
-            node.send(msg);
+                status.success(node, 'Deployed');
+                msg.payload = res;
+                node.send(msg);
+            } catch (e) {
+                node.error(e.message);
+                status.error(node, 'Deploy error');
+            }
         });
     }
 
