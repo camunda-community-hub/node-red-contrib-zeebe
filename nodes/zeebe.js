@@ -18,13 +18,15 @@ module.exports = function(RED) {
                 cacheOnDisk: true,
             },
             onReady: () => {
-                node.log('Connected');
+                node.log(`Connected to ${config.contactPoint}`);
+                node.emit('ready');
             },
             onConnectionError: () => {
-                node.warn('Connection Error');
+                node.log('Connection Error');
+                node.emit('connectionError');
             },
             loglevel: 'ERROR',
-            stdout: logger(node),
+            stdout: logger(node, RED.settings.logging),
         };
 
         if (config.useLongpoll) {
