@@ -17,7 +17,7 @@ module.exports = `<?xml version="1.0" encoding="UTF-8"?>
     <bpmn:sequenceFlow id="SequenceFlow_1a9jutk" sourceRef="IntermediateCatchEvent_0uo7k40" targetRef="ServiceTask_1vgkloc" />
     <bpmn:serviceTask id="ServiceTask_1vgkloc" name="Node-RED">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="node-red" />
+        <zeebe:taskDefinition type="node-red2" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1a9jutk</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0yzvmcb</bpmn:outgoing>
