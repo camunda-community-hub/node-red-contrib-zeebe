@@ -126,7 +126,7 @@ describe('integration', () => {
                     });
                 });
 
-                // deploy workflow02
+                // deploy workflow01
                 deployNode.receive({
                     payload: { definition: workflow01, resourceName: 'workflow01.bpmn' },
                 });
