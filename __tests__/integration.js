@@ -13,7 +13,7 @@ const workflow01 = require('../resources/workflow01');
 const workflow02 = require('../resources/workflow02');
 
 jest.unmock('zeebe-node');
-jest.setTimeout(15000);
+jest.setTimeout(10000);
 
 helper.init(require.resolve('node-red'));
 
@@ -179,7 +179,7 @@ describe('integration', () => {
                 id: 'task-worker-node',
                 type: 'task-worker',
                 name: 'task-worker',
-                taskType: 'node-red',
+                taskType: 'node-red2',
                 zeebe: 'zeebe-node',
                 wires: [['complete-task-node']],
             },
@@ -237,7 +237,7 @@ describe('integration', () => {
                                     correlationKey: processId,
                                 },
                             });
-                        }, 5000);
+                        }, 3000);
                     });
                 });
 
