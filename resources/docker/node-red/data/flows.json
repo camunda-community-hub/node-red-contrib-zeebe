@@ -1,0 +1,109 @@
+[
+    {
+        "id": "6f9d40a3.d41ec",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "68959c98.c219b4",
+        "type": "zeebe",
+        "z": "",
+        "name": "",
+        "contactPoint": "zeebe:26500",
+        "useTls": false,
+        "useLongpoll": false,
+        "oAuthUrl": "",
+        "clientId": "",
+        "clientSecret": ""
+    },
+    {
+        "id": "c3493250.5b40f8",
+        "type": "deploy",
+        "z": "6f9d40a3.d41ec",
+        "name": "",
+        "zeebe": "68959c98.c219b4",
+        "x": 570,
+        "y": 160,
+        "wires": [["516a66e8.66ede8"]]
+    },
+    {
+        "id": "b9f6f975.c441b",
+        "type": "inject",
+        "z": "6f9d40a3.d41ec",
+        "name": "inject bpmn",
+        "topic": "",
+        "payload": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:zeebe=\"http://camunda.org/schema/zeebe/1.0\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" id=\"Definitions_0f8psqe\" targetNamespace=\"http://bpmn.io/schema/bpmn\" exporter=\"Zeebe Modeler\" exporterVersion=\"0.6.2\"> <bpmn:process id=\"RedFlow\" name=\"RedFlow\" isExecutable=\"true\"> <bpmn:startEvent id=\"StartEvent_1\"> <bpmn:outgoing>SequenceFlow_04100pc</bpmn:outgoing> </bpmn:startEvent> <bpmn:serviceTask id=\"ServiceTask_0aa3gxy\" name=\"Node-RED\"> <bpmn:extensionElements> <zeebe:taskDefinition type=\"node-red\" /> </bpmn:extensionElements> <bpmn:incoming>SequenceFlow_04100pc</bpmn:incoming> <bpmn:outgoing>SequenceFlow_1db5jap</bpmn:outgoing> </bpmn:serviceTask> <bpmn:sequenceFlow id=\"SequenceFlow_04100pc\" sourceRef=\"StartEvent_1\" targetRef=\"ServiceTask_0aa3gxy\" /> <bpmn:endEvent id=\"EndEvent_0jta9ro\"> <bpmn:incoming>SequenceFlow_1db5jap</bpmn:incoming> </bpmn:endEvent> <bpmn:sequenceFlow id=\"SequenceFlow_1db5jap\" sourceRef=\"ServiceTask_0aa3gxy\" targetRef=\"EndEvent_0jta9ro\" /> </bpmn:process> <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\"> <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"RedFlow\"> <bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\"> <dc:Bounds x=\"179\" y=\"103\" width=\"36\" height=\"36\" /> </bpmndi:BPMNShape> <bpmndi:BPMNShape id=\"ServiceTask_0aa3gxy_di\" bpmnElement=\"ServiceTask_0aa3gxy\"> <dc:Bounds x=\"343\" y=\"81\" width=\"100\" height=\"80\" /> </bpmndi:BPMNShape> <bpmndi:BPMNEdge id=\"SequenceFlow_04100pc_di\" bpmnElement=\"SequenceFlow_04100pc\"> <di:waypoint x=\"215\" y=\"121\" /> <di:waypoint x=\"343\" y=\"121\" /> </bpmndi:BPMNEdge> <bpmndi:BPMNShape id=\"EndEvent_0jta9ro_di\" bpmnElement=\"EndEvent_0jta9ro\"> <dc:Bounds x=\"576\" y=\"103\" width=\"36\" height=\"36\" /> </bpmndi:BPMNShape> <bpmndi:BPMNEdge id=\"SequenceFlow_1db5jap_di\" bpmnElement=\"SequenceFlow_1db5jap\"> <di:waypoint x=\"443\" y=\"121\" /> <di:waypoint x=\"576\" y=\"121\" /> </bpmndi:BPMNEdge> </bpmndi:BPMNPlane> </bpmndi:BPMNDiagram> </bpmn:definitions>",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 160,
+        "wires": [["60740a6e.71a3a4"]]
+    },
+    {
+        "id": "60740a6e.71a3a4",
+        "type": "change",
+        "z": "6f9d40a3.d41ec",
+        "name": "prepare",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.definition",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 160,
+        "wires": [["c3493250.5b40f8"]]
+    },
+    {
+        "id": "59d96733.63a5f8",
+        "type": "catch",
+        "z": "6f9d40a3.d41ec",
+        "name": "",
+        "scope": ["c3493250.5b40f8"],
+        "uncaught": false,
+        "x": 370,
+        "y": 240,
+        "wires": [["8b5a4bbf.fa6688"]]
+    },
+    {
+        "id": "8b5a4bbf.fa6688",
+        "type": "debug",
+        "z": "6f9d40a3.d41ec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 540,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "516a66e8.66ede8",
+        "type": "debug",
+        "z": "6f9d40a3.d41ec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 730,
+        "y": 160,
+        "wires": []
+    }
+]
