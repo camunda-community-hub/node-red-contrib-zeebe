@@ -91,3 +91,7 @@ And then run them manually:
 ```bash
 npm run test:integration
 ```
+
+## Contributions
+
+Contributions are always welcome! There are some [open issues](https://github.com/pedesen/node-red-contrib-zeebe/issues).
