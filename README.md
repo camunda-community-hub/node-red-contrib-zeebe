@@ -11,7 +11,7 @@ Learn more about how these nodes can be used from basic [example flows](https://
 ![task-worker and complete node](docs/worker-complete.png)
 
 Creates a task worker and subscribes to specific tasks/jobs. The `worker` node outputs a Node-RED message for each newly received task/job.
-When a Node-RED message is received at the `complete` nodes's input, that task/job gets completed in Zeebe (with either success or failure).
+When a Node-RED message is received at the `complete` nodes's input, that task/job gets completed in Zeebe (with either success, failure or error).
 
 Please note: These nodes only work in combination. Make sure, the complete object from the worker node output payload gets injected into the input of the complete node.
 

@@ -6,6 +6,7 @@ helper.init(require.resolve('node-red'));
 const completeMock = {
     success: jest.fn(),
     failure: jest.fn(),
+    error: jest.fn(),
 };
 
 describe('complete-task node', () => {
@@ -75,6 +76,41 @@ describe('complete-task node', () => {
                     complete: completeMock,
                     type: 'failure',
                     failureMessage,
+                },
+            });
+        });
+    });
+
+    it('should call complete.error', done => {
+        var flow = [
+            {
+                id: 'n1',
+                type: 'complete-task',
+                name: 'complete-task',
+            },
+        ];
+
+        helper.load([completeTaskNode], flow, () => {
+            const errorCode = '404';
+            const errorMessage = 'Error Not Found';
+
+            const n1 = helper.getNode('n1');
+
+            completeMock.error.mockImplementation(() => {
+                expect(completeMock.error).toHaveBeenCalledTimes(1);
+                expect(completeMock.error).toHaveBeenCalledWith(
+                    errorCode,
+                    errorMessage
+                );
+                done();
+            });
+
+            n1.receive({
+                payload: {
+                    complete: completeMock,
+                    type: 'error',
+                    errorCode,
+                    errorMessage,
                 },
             });
         });
