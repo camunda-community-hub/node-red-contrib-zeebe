@@ -26,7 +26,7 @@
         "microservice"
     ],
     "dependencies": {
-        "uuid": "^3.3.2",
+        "uuid": "^7.0.0",
         "zeebe-node": "0.22.1"
     },
     "devDependencies": {
