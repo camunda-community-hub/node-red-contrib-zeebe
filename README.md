@@ -4,6 +4,8 @@
 
 This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-client-node-js/index.html) client library to bring Zeebe awesomeness to Node-RED!
 
+Currently supported Zeebe version: 0.23.x
+
 Learn more about how these nodes can be used from basic [example flows](https://flows.nodered.org/collection/IC--I_j4q-Mt).
 
 ### worker / complete
