@@ -30,7 +30,7 @@
         "zeebe-node": "0.23.3"
     },
     "devDependencies": {
-        "eslint": "^6.1.0",
+        "eslint": "^7.2.0",
         "husky": "^4.0.10",
         "jest": "^26.0.1",
         "lint-staged": "^10.2.11",
