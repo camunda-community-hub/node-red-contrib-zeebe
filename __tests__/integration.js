@@ -1,4 +1,4 @@
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const helper = require('node-red-node-test-helper');
 
 const zeebeNode = require('../src/nodes/zeebe');
@@ -18,11 +18,11 @@ jest.setTimeout(30000);
 helper.init(require.resolve('node-red'));
 
 describe('integration', () => {
-    beforeEach(done => {
+    beforeEach((done) => {
         helper.startServer(done);
     });
 
-    afterEach(done => {
+    afterEach((done) => {
         helper.unload();
         helper.stopServer(done);
     });
@@ -34,7 +34,7 @@ describe('integration', () => {
      * - start a workflow instance
      * - complete a task
      */
-    it('create instance, complete task', done => {
+    it('create instance, complete task', (done) => {
         var flow = [
             {
                 id: 'zeebe-node',
@@ -100,13 +100,13 @@ describe('integration', () => {
                 const n2 = helper.getNode('n2');
 
                 // complete task
-                completeTaskNode.on('input', msg => {
+                completeTaskNode.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         done();
                     });
                 });
 
-                n2.on('input', msg => {
+                n2.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         expect(msg.payload.workflowInstanceKey).toEqual(
                             expect.any(String)
@@ -114,7 +114,7 @@ describe('integration', () => {
                     });
                 });
 
-                n1.on('input', msg => {
+                n1.on('input', (msg) => {
                     // get workflow name from message
                     const workflowName = msg.payload.workflows[0].bpmnProcessId;
 
@@ -210,16 +210,16 @@ describe('integration', () => {
                 const completeTaskNode = helper.getNode('complete-task-node');
                 const n1 = helper.getNode('n1');
 
-                const processId = uuid.v4();
+                const processId = uuidv4();
 
                 // complete task
-                completeTaskNode.on('input', msg => {
+                completeTaskNode.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         done();
                     });
                 });
 
-                n1.on('input', msg => {
+                n1.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         // publish start message
                         pubStartMsgNode.receive({
