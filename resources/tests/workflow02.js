@@ -27,7 +27,7 @@ module.exports = `<?xml version="1.0" encoding="UTF-8"?>
   <bpmn:message id="Message_0hq3a9i" name="StartMessage" />
   <bpmn:message id="Message_0bc4y50" name="Message">
     <bpmn:extensionElements>
-      <zeebe:subscription correlationKey="processId" />
+      <zeebe:subscription correlationKey="=processId" />
     </bpmn:extensionElements>
   </bpmn:message>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">

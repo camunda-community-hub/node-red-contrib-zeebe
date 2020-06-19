@@ -128,7 +128,7 @@ describe('integration', () => {
 
                 // deploy workflow02
                 deployNode.receive({
-                    payload: { definition: workflow01 },
+                    payload: { definition: workflow01, resourceName: 'workflow01.bpmn' },
                 });
             }
         );
@@ -243,7 +243,7 @@ describe('integration', () => {
 
                 // deploy workflow02
                 deployNode.receive({
-                    payload: { definition: workflow02 },
+                    payload: { definition: workflow02, resourceName: 'workflow02.bpmn' },
                 });
             }
         );

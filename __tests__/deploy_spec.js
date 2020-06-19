@@ -45,7 +45,7 @@ describe('deploy node', () => {
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledTimes(1);
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledWith(
                         expect.objectContaining({
-                            resourceName: expect.stringMatching(/^test.bpmn$/),
+                            name: expect.stringMatching(/^test.bpmn$/),
                             definition: expect.any(Buffer),
                         })
                     );
