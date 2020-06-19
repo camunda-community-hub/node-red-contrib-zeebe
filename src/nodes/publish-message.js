@@ -1,5 +1,5 @@
 const status = require('../util/nodeStatus');
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = function(RED) {
     function PublishMessage(config) {
@@ -9,7 +9,7 @@ module.exports = function(RED) {
         this.zbc = RED.nodes.getNode(config.zeebe).zbc;
 
         node.on('input', function(msg) {
-            const message = { ...msg.payload, messageId: uuid.v4() };
+            const message = { ...msg.payload, messageId: uuidv4() };
             try {
                 this.zbc.publishMessage(message);
                 status.clear(node);
