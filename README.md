@@ -82,7 +82,7 @@ Integration tests are in the `__tests__/integration.js` file.
 They require a Zeebe broker to run. You can start a dockerised broker:
 
 ```bash
-cd resources
+cd resources/travis/
 docker-compose up
 ```
 
