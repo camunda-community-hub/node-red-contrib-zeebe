@@ -13,7 +13,7 @@ module.exports = function(RED) {
             try {
                 const res = await this.zbc.deployWorkflow({
                     definition: Buffer.from(definition),
-                    resourceName,
+                    name: resourceName,
                 });
 
                 status.success(node, 'Deployed');
