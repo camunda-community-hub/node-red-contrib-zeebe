@@ -10,14 +10,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pedesen/node-red-contrib-zeebe.git"
+        "url": "git+https://github.com/camunda-community-hub/node-red-contrib-zeebe.git"
     },
     "author": "pedesen",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/pedesen/node-red-contrib-zeebe/issues"
+        "url": "https://github.com/camunda-community-hub/node-red-contrib-zeebe/issues"
     },
-    "homepage": "https://github.com/pedesen/node-red-contrib-zeebe#readme",
+    "homepage": "https://github.com/camunda-community-hub/node-red-contrib-zeebe#readme",
     "keywords": [
         "node-red",
         "zeebe",
