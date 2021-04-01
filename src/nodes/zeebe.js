@@ -1,6 +1,6 @@
 const logger = require('../util/logger');
 
-module.exports = function(RED) {
+module.exports = function (RED) {
     const ZB = require('zeebe-node');
 
     function Zeebe(config) {
@@ -39,7 +39,7 @@ module.exports = function(RED) {
 
         node.zbc = new ZB.ZBClient(config.contactPoint, options);
 
-        node.on('close', function(done) {
+        node.on('close', function (done) {
             return node.zbc.close().then(() => {
                 node.log('All workers closed');
                 done();

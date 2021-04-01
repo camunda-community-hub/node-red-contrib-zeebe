@@ -1,6 +1,6 @@
 const status = require('../util/nodeStatus');
 
-module.exports = function(RED) {
+module.exports = function (RED) {
     function TaskWorker(config) {
         RED.nodes.createNode(this, config);
 

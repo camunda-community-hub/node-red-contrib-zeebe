@@ -3,16 +3,16 @@
         category: 'zeebe',
         color: '#C0DEED',
         defaults: {
-            name: { value: "" },
-            zeebe: { required: true, type: "zeebe" }
+            name: { value: '' },
+            zeebe: { required: true, type: 'zeebe' },
         },
         inputs: 1,
         outputs: 0,
-        icon: "zeebe.png",
+        icon: 'zeebe.png',
         label: function () {
-            return this.name || "pub start msg";
+            return this.name || 'pub start msg';
         },
-        paletteLabel: 'pub start msg'
+        paletteLabel: 'pub start msg',
     });
 </script>
 
@@ -44,7 +44,7 @@
         <dt class="optional">payload.timeToLive <span class="property-type">number</span></dt>
         <dd>How long the message should be buffered on the broker, in milliseconds.</dd>
     </dl>
-    
+
     <h3>References</h3>
     <ul>
         <li>Zeebe docs: <a href="https://docs.zeebe.io/bpmn-workflows/message-events.html">Message Events</a></li>

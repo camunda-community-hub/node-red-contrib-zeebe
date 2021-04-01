@@ -3,16 +3,22 @@
         category: 'config',
         defaults: {
             name: { value: '' },
-            contactPoint: { value: "<YOUR_CLUSTER_ID>.zeebe.camunda.io:443", required: true },
+            contactPoint: {
+                value: '<YOUR_CLUSTER_ID>.zeebe.camunda.io:443',
+                required: true,
+            },
             useTls: { value: true, required: false },
             useLongpoll: { value: true, required: false },
-            oAuthUrl: { value: 'https://login.cloud.camunda.io/oauth/token', required: false },
+            oAuthUrl: {
+                value: 'https://login.cloud.camunda.io/oauth/token',
+                required: false,
+            },
             clientId: { value: '', required: false },
             clientSecret: { value: '', required: false },
         },
         label: function () {
-            return this.name || this.contactPoint || "zeebe"
-        }
+            return this.name || this.contactPoint || 'zeebe';
+        },
     });
 </script>
 

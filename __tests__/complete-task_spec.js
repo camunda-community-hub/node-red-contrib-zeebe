@@ -10,17 +10,17 @@ const completeMock = {
 };
 
 describe('complete-task node', () => {
-    beforeEach(done => {
+    beforeEach((done) => {
         helper.startServer(done);
         jest.resetAllMocks();
     });
 
-    afterEach(done => {
+    afterEach((done) => {
         helper.unload();
         helper.stopServer(done);
     });
 
-    it('should call complete.success with variables', done => {
+    it('should call complete.success with variables', (done) => {
         const variables = { workflowId: 123 };
 
         var flow = [
@@ -49,7 +49,7 @@ describe('complete-task node', () => {
         });
     });
 
-    it('should call complete.failure', done => {
+    it('should call complete.failure', (done) => {
         var flow = [
             {
                 id: 'n1',
@@ -81,7 +81,7 @@ describe('complete-task node', () => {
         });
     });
 
-    it('should call complete.error', done => {
+    it('should call complete.error', (done) => {
         var flow = [
             {
                 id: 'n1',

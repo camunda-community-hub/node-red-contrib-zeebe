@@ -1,10 +1,10 @@
-const getMsg = obj => JSON.parse(obj).message;
+const getMsg = (obj) => JSON.parse(obj).message;
 
 /**
  * Custom logger for ZBClient
  */
 module.exports = (node, settings) => {
-    defaultLogger = obj => {
+    defaultLogger = (obj) => {
         if (settings.console.level === 'trace') {
             node.trace(obj);
         } else {

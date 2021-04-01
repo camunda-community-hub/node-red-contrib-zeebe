@@ -1,5 +1,5 @@
 module.exports = {
-    error: function(node, errorMsg) {
+    error: function (node, errorMsg) {
         node.status({
             fill: 'red',
             shape: 'dot',
@@ -7,7 +7,7 @@ module.exports = {
         });
     },
 
-    success: function(node, successMsg) {
+    success: function (node, successMsg) {
         node.status({
             fill: 'green',
             shape: 'dot',
@@ -15,7 +15,7 @@ module.exports = {
         });
     },
 
-    warning: function(node, failureMessage) {
+    warning: function (node, failureMessage) {
         node.status({
             fill: 'yellow',
             shape: 'dot',
@@ -23,7 +23,7 @@ module.exports = {
         });
     },
 
-    clear: function(node) {
+    clear: function (node) {
         node.status({});
     },
 };

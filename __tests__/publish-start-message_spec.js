@@ -5,17 +5,17 @@ const zeebeNode = require('../src/nodes/zeebe');
 helper.init(require.resolve('node-red'));
 
 describe('publish-start-message node', () => {
-    beforeEach(done => {
+    beforeEach((done) => {
         jest.resetAllMocks();
         helper.startServer(done);
     });
 
-    afterEach(done => {
+    afterEach((done) => {
         helper.unload();
         helper.stopServer(done);
     });
 
-    it('should call zbc.publishStarthMessage', done => {
+    it('should call zbc.publishStarthMessage', (done) => {
         var flow = [
             {
                 id: 'n1',

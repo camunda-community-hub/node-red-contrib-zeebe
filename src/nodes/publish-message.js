@@ -1,14 +1,14 @@
 const status = require('../util/nodeStatus');
 const { v4: uuidv4 } = require('uuid');
 
-module.exports = function(RED) {
+module.exports = function (RED) {
     function PublishMessage(config) {
         RED.nodes.createNode(this, config);
         const node = this;
 
         this.zbc = RED.nodes.getNode(config.zeebe).zbc;
 
-        node.on('input', function(msg) {
+        node.on('input', function (msg) {
             const message = { ...msg.payload, messageId: uuidv4() };
             try {
                 this.zbc.publishMessage(message);

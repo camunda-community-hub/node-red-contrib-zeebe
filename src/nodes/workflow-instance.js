@@ -1,11 +1,11 @@
 const status = require('../util/nodeStatus');
 
-module.exports = function(RED) {
+module.exports = function (RED) {
     function WorkflowInstance(config) {
         RED.nodes.createNode(this, config);
         const node = this;
 
-        node.on('input', async function(msg) {
+        node.on('input', async function (msg) {
             this.zbc = RED.nodes.getNode(config.zeebe).zbc;
             const variables = msg.payload.variables || {};
 

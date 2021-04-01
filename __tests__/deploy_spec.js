@@ -5,17 +5,17 @@ const zeebeNode = require('../src/nodes/zeebe');
 helper.init(require.resolve('node-red'));
 
 describe('deploy node', () => {
-    beforeEach(done => {
+    beforeEach((done) => {
         jest.resetAllMocks();
         helper.startServer(done);
     });
 
-    afterEach(done => {
+    afterEach((done) => {
         helper.unload();
         helper.stopServer(done);
     });
 
-    it('should call zbc.deployWorkflow', done => {
+    it('should call zbc.deployWorkflow', (done) => {
         var flow = [
             {
                 id: 'n1',
@@ -40,7 +40,7 @@ describe('deploy node', () => {
             const n2 = helper.getNode('n2');
             const n3 = helper.getNode('n3');
 
-            n3.on('input', msg => {
+            n3.on('input', (msg) => {
                 Promise.resolve().then(() => {
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledTimes(1);
                     expect(n1.zbc.deployWorkflow).toHaveBeenCalledWith(
