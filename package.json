@@ -42,7 +42,7 @@
     "node-red": {
         "nodes": {
             "zeebe": "src/nodes/zeebe.js",
-            "workflow-instance": "src/nodes/workflow-instance.js",
+            "process-instance": "src/nodes/process-instance.js",
             "task-worker": "src/nodes/task-worker.js",
             "complete-task": "src/nodes/complete-task.js",
             "publish-message": "src/nodes/publish-message.js",
@@ -54,7 +54,7 @@
         "testEnvironment": "node"
     },
     "lint-staged": {
-        "src/**/*.js": [
+        "*.js": [
             "eslint --cache --fix",
             "prettier --write"
         ]

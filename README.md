@@ -23,7 +23,7 @@ Please note: These nodes only work in combination. Make sure, the complete objec
 
 See [example flow](https://flows.nodered.org/flow/71e06f6a3e3bcbc7721cd970215b5180).
 
-### pub msg
+### message
 
 ![publish-message node](docs/pub-msg.png)
 
@@ -33,7 +33,7 @@ The message must contain a name and a correlation key. Optionally you can pass i
 
 See [example flow](https://flows.nodered.org/flow/d409cb6dfdd283a01724dc85cd65387e).
 
-### pub start msg
+### start message
 
 ![publish-start-message node](docs/pub-start-msg.png)
 
@@ -43,23 +43,23 @@ The message must contain a name, no correlation key needed. Optionally you can p
 
 See [example flow](https://flows.nodered.org/flow/5ab8499646b88cdbbb40a526ff4638d8).
 
-### deploy
+### process
 
 ![deploy node](docs/deploy.png)
 
-Inject a bpmn workflow definition string to the input of this node to deploy it to Zeebe.
+Inject a bpmn process definition string to the input of this node to deploy it to Zeebe.
 
-You can use the 'file in' node from Node-RED to read a bpmn file from disk, or get the workflow definition from anywhere you want.
+You can use the 'file in' node from Node-RED to read a bpmn file from disk, or get the process definition from anywhere you want.
 
 See [example flow](https://flows.nodered.org/flow/1fdad35c25b7269eea64b76d3236c3a6).
 
-### create wfi
+### process instance
 
 ![workflow-instance node](docs/create-wfi.png)
 
-A new workflow instance gets started in Zeebe, when a Node-RED message is received at the input.
+A new process instance gets started in Zeebe, when a Node-RED message is received at the input.
 
-Once the workflow instance has been created, the output sends a Node-RED message containing some meta-info, i.e. the workflowInstanceKey.
+Once the process instance has been created, the output sends a Node-RED message containing some meta-info, i.e. the processInstanceKey.
 
 See [example flow](https://flows.nodered.org/flow/1195ed3512bc05c02558e319ebc46abb).
 

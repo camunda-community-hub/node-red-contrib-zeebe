@@ -22,6 +22,7 @@ exports.ZBClient = jest.fn().mockImplementation(() => {
         deployWorkflow: jest.fn().mockResolvedValue({
             workflows: [{ bpmnProcessId: 'my-process' }],
         }),
+        createProcessInstance: jest.fn(),
         close: () => {},
     };
 });
