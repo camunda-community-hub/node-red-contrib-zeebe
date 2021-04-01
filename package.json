@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "jest --testPathIgnorePatterns integration --forceExit --detectOpenHandles",
-        "test:integration": "jest --forceExit --detectOpenHandles"
+        "test:integration": "jest --forceExit --detectOpenHandles",
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
@@ -26,16 +27,17 @@
         "microservice"
     ],
     "dependencies": {
-        "uuid": "^8.1.0",
-        "zeebe-node": "0.23.3"
+        "uuid": "^8.3.2",
+        "zeebe-node": "1.0.0-alpha.3"
     },
     "devDependencies": {
-        "eslint": "^6.1.0",
-        "husky": "^4.0.10",
-        "jest": "^26.0.1",
-        "lint-staged": "^10.2.11",
-        "node-red": "^1.0.2",
-        "node-red-node-test-helper": "^0.2.3"
+        "eslint": "^7.23.0",
+        "husky": "^6.0.0",
+        "jest": "^26.6.3",
+        "lint-staged": "^10.5.4",
+        "node-red": "^1.2.9",
+        "node-red-node-test-helper": "^0.2.7",
+        "prettier": "2.2.1"
     },
     "node-red": {
         "nodes": {
@@ -51,21 +53,10 @@
     "jest": {
         "testEnvironment": "node"
     },
-    "prettier": {
-        "trailingComma": "es5",
-        "tabWidth": 4,
-        "semi": true,
-        "singleQuote": true
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged && npm test"
-        }
-    },
     "lint-staged": {
         "src/**/*.js": [
-            "prettier --write",
-            "git add"
+            "eslint --cache --fix",
+            "prettier --write"
         ]
     }
 }
