@@ -1,10 +1,10 @@
 const helper = require('node-red-node-test-helper');
-const publishMessageNode = require('../src/nodes/publish-message.js');
+const publishMessageNode = require('../src/nodes/message.js');
 const zeebeNode = require('../src/nodes/zeebe');
 
 helper.init(require.resolve('node-red'));
 
-describe('publish-message node', () => {
+describe('message node', () => {
     beforeEach((done) => {
         jest.resetAllMocks();
         helper.startServer(done);
@@ -25,8 +25,8 @@ describe('publish-message node', () => {
             },
             {
                 id: 'n2',
-                type: 'publish-message',
-                name: 'publish-message',
+                type: 'message',
+                name: 'message',
                 zeebe: 'n1',
             },
         ];

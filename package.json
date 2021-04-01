@@ -45,8 +45,8 @@
             "process-instance": "src/nodes/process-instance.js",
             "task-worker": "src/nodes/task-worker.js",
             "complete-task": "src/nodes/complete-task.js",
-            "publish-message": "src/nodes/publish-message.js",
-            "publish-start-message": "src/nodes/publish-start-message.js",
+            "message": "src/nodes/message.js",
+            "start-message": "src/nodes/start-message.js",
             "deploy": "src/nodes/deploy.js"
         }
     },

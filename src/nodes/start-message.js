@@ -2,7 +2,7 @@ const status = require('../util/nodeStatus');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = function (RED) {
-    function PublishStartMessage(config) {
+    function StartMessage(config) {
         RED.nodes.createNode(this, config);
         const node = this;
 
@@ -20,5 +20,5 @@ module.exports = function (RED) {
             }
         });
     }
-    RED.nodes.registerType('publish-start-message', PublishStartMessage);
+    RED.nodes.registerType('start-message', StartMessage);
 };

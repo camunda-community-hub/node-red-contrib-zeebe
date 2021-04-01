@@ -6,8 +6,8 @@ const taskWorkerNode = require('../src/nodes/task-worker');
 const deployNode = require('../src/nodes/deploy');
 const processInstanceNode = require('../src/nodes/process-instance');
 const completeTaskNode = require('../src/nodes/complete-task');
-const pubStartMsgNode = require('../src/nodes/publish-start-message');
-const pubMsgNode = require('../src/nodes/publish-message');
+const startMessageNode = require('../src/nodes/start-message');
+const messageNode = require('../src/nodes/message');
 
 const workflow01 = require('../resources/tests/workflow01');
 const workflow02 = require('../resources/tests/workflow02');
@@ -165,15 +165,15 @@ describe('integration', () => {
                 wires: [['n1']],
             },
             {
-                id: 'pub-start-msg-node',
-                type: 'publish-start-message',
-                name: 'publish-start-message',
+                id: 'start-message-node',
+                type: 'start-message',
+                name: 'start-message',
                 zeebe: 'zeebe-node',
             },
             {
-                id: 'pub-msg-node',
-                type: 'publish-message',
-                name: 'publish-message',
+                id: 'message-node',
+                type: 'message',
+                name: 'message',
                 zeebe: 'zeebe-node',
             },
             {
@@ -200,14 +200,14 @@ describe('integration', () => {
                 taskWorkerNode,
                 completeTaskNode,
                 deployNode,
-                pubStartMsgNode,
-                pubMsgNode,
+                startMessageNode,
+                messageNode,
             ],
             flow,
             () => {
                 const deploy = helper.getNode('deploy-node');
-                const pubStartMsg = helper.getNode('pub-start-msg-node');
-                const pubMsg = helper.getNode('pub-msg-node');
+                const startMessage = helper.getNode('start-message-node');
+                const message = helper.getNode('message-node');
                 const completeTask = helper.getNode('complete-task-node');
                 const n1 = helper.getNode('n1');
 
@@ -223,7 +223,7 @@ describe('integration', () => {
                 n1.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         // publish start message
-                        pubStartMsg.receive({
+                        startMessage.receive({
                             payload: {
                                 name: 'StartMessage',
                                 variables: { processId },
@@ -232,7 +232,7 @@ describe('integration', () => {
 
                         setTimeout(() => {
                             // publish message
-                            pubMsg.receive({
+                            message.receive({
                                 payload: {
                                     name: 'Message',
                                     correlationKey: processId,
