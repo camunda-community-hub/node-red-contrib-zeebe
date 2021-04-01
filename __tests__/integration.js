@@ -4,7 +4,7 @@ const helper = require('node-red-node-test-helper');
 const zeebeNode = require('../src/nodes/zeebe');
 const taskWorkerNode = require('../src/nodes/task-worker');
 const deployNode = require('../src/nodes/deploy');
-const workflowInstanceNode = require('../src/nodes/workflow-instance');
+const processInstanceNode = require('../src/nodes/process-instance');
 const completeTaskNode = require('../src/nodes/complete-task');
 const pubStartMsgNode = require('../src/nodes/publish-start-message');
 const pubMsgNode = require('../src/nodes/publish-message');
@@ -56,9 +56,9 @@ describe('integration', () => {
                 wires: [['n1']],
             },
             {
-                id: 'workflow-instance-node',
-                type: 'workflow-instance',
-                name: 'workflow-instance',
+                id: 'process-instance-node',
+                type: 'process-instance',
+                name: 'process-instance',
                 zeebe: 'zeebe-node',
                 wires: [['n2']],
             },
@@ -86,21 +86,19 @@ describe('integration', () => {
                 zeebeNode,
                 taskWorkerNode,
                 deployNode,
-                workflowInstanceNode,
+                processInstanceNode,
                 completeTaskNode,
             ],
             flow,
             () => {
-                const deployNode = helper.getNode('deploy-node');
-                const workflowInstanceNode = helper.getNode(
-                    'workflow-instance-node'
-                );
-                const completeTaskNode = helper.getNode('complete-task-node');
+                const deploy = helper.getNode('deploy-node');
+                const processInstance = helper.getNode('process-instance-node');
+                const completeTask = helper.getNode('complete-task-node');
                 const n1 = helper.getNode('n1');
                 const n2 = helper.getNode('n2');
 
                 // complete task
-                completeTaskNode.on('input', (msg) => {
+                completeTask.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         done();
                     });
@@ -108,7 +106,7 @@ describe('integration', () => {
 
                 n2.on('input', (msg) => {
                     Promise.resolve().then(() => {
-                        expect(msg.payload.workflowInstanceKey).toEqual(
+                        expect(msg.payload.processInstanceKey).toEqual(
                             expect.any(String)
                         );
                     });
@@ -116,18 +114,18 @@ describe('integration', () => {
 
                 n1.on('input', (msg) => {
                     // get workflow name from message
-                    const workflowName = msg.payload.workflows[0].bpmnProcessId;
+                    const processId = msg.payload.workflows[0].bpmnProcessId;
 
                     Promise.resolve().then(() => {
                         // create a workflow instance
-                        workflowInstanceNode.receive({
-                            payload: { workflowName },
+                        processInstance.receive({
+                            payload: { processId },
                         });
                     });
                 });
 
                 // deploy workflow02
-                deployNode.receive({
+                deploy.receive({
                     payload: {
                         definition: workflow01,
                         resourceName: 'workflow01.bpmn',
@@ -145,7 +143,7 @@ describe('integration', () => {
      * - publish a message
      * - complete a task
      */
-    it.skip('publish start message, publish message, complete task', (done) => {
+    it('publish start message, publish message, complete task', (done) => {
         var flow = [
             {
                 id: 'zeebe-node',
@@ -207,16 +205,16 @@ describe('integration', () => {
             ],
             flow,
             () => {
-                const deployNode = helper.getNode('deploy-node');
-                const pubStartMsgNode = helper.getNode('pub-start-msg-node');
-                const pubMsgNode = helper.getNode('pub-msg-node');
-                const completeTaskNode = helper.getNode('complete-task-node');
+                const deploy = helper.getNode('deploy-node');
+                const pubStartMsg = helper.getNode('pub-start-msg-node');
+                const pubMsg = helper.getNode('pub-msg-node');
+                const completeTask = helper.getNode('complete-task-node');
                 const n1 = helper.getNode('n1');
 
                 const processId = uuidv4();
 
                 // complete task
-                completeTaskNode.on('input', (msg) => {
+                completeTask.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         done();
                     });
@@ -225,7 +223,7 @@ describe('integration', () => {
                 n1.on('input', (msg) => {
                     Promise.resolve().then(() => {
                         // publish start message
-                        pubStartMsgNode.receive({
+                        pubStartMsg.receive({
                             payload: {
                                 name: 'StartMessage',
                                 variables: { processId },
@@ -234,7 +232,7 @@ describe('integration', () => {
 
                         setTimeout(() => {
                             // publish message
-                            pubMsgNode.receive({
+                            pubMsg.receive({
                                 payload: {
                                     name: 'Message',
                                     correlationKey: processId,
@@ -245,7 +243,7 @@ describe('integration', () => {
                 });
 
                 // deploy workflow02
-                deployNode.receive({
+                deploy.receive({
                     payload: {
                         definition: workflow02,
                         resourceName: 'workflow02.bpmn',
