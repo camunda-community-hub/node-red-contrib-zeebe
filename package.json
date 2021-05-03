@@ -28,7 +28,7 @@
     ],
     "dependencies": {
         "uuid": "^8.3.2",
-        "zeebe-node": "1.0.0-alpha.3"
+        "zeebe-node": "1.0.0-alpha.7"
     },
     "devDependencies": {
         "eslint": "^7.23.0",
