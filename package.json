@@ -37,7 +37,7 @@
         "lint-staged": "^11.0.1",
         "node-red": "^2.0.2",
         "node-red-node-test-helper": "^0.2.7",
-        "prettier": "2.3.2"
+        "prettier": "2.6.1"
     },
     "node-red": {
         "nodes": {
