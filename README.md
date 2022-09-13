@@ -10,7 +10,7 @@
 
 This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-client-node-js/index.html) client library to bring Zeebe awesomeness to Node-RED!
 
-**Please upgrade node-red-contrib-zeebe to v0.7+ for Zeebe v1.0 or current Camunda Cloud support!** Zeebe versions prior to v1.0 are not supported anymore.
+**Please upgrade node-red-contrib-zeebe to v0.7+ for Zeebe v1.0 or current Camunda Platform 8 support!** Zeebe versions prior to v1.0 are not supported anymore.
 
 Learn more about how these nodes can be used from basic [example flows](https://flows.nodered.org/collection/IC--I_j4q-Mt).
 
