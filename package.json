@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --testPathIgnorePatterns integration --forceExit --detectOpenHandles",
-    "test:integration": "jest --forceExit --detectOpenHandles",
-    "prepare": "husky install"
+    "test:integration": "jest --forceExit --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -54,9 +53,6 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
+    "*.js": ["eslint --cache --fix", "prettier --write"]
   }
 }
