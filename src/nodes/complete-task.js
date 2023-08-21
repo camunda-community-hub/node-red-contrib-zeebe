@@ -8,23 +8,23 @@ module.exports = function (RED) {
 
         node.on('input', async function (msg) {
             const {
-                complete,
+                job,
                 variables,
                 type,
                 failureMessage,
                 errorCode,
                 errorMessage,
-            } = msg.payload;
+            } = msg.payload
 
             try {
                 if (type === 'failure') {
-                    complete.failure(failureMessage || '');
+                    job.fail(failureMessage || '');
                     status.warning(node, failureMessage || 'Failure');
                 } else if (type === 'error') {
-                    complete.error(errorCode, errorMessage);
+                    job.error({ errorCode, errorMessage, variables });
                     status.clear(node);
                 } else {
-                    complete.success(variables);
+                    job.complete(variables);
                     status.clear(node);
                 }
             } catch (err) {

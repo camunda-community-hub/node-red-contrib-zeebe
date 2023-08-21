@@ -4,7 +4,7 @@ const zeebeNode = require('../src/nodes/zeebe');
 
 helper.init(require.resolve('node-red'));
 
-describe('task-worder node', () => {
+describe('task-worker node', () => {
     beforeEach((done) => {
         helper.startServer(done);
     });
@@ -14,7 +14,7 @@ describe('task-worder node', () => {
         helper.stopServer(done);
     });
 
-    it('should ouput response from zebee-node', (done) => {
+    it('should output response from zeebe-node', (done) => {
         var flow = [
             {
                 id: 'n1',
@@ -37,9 +37,9 @@ describe('task-worder node', () => {
 
             n3.on('input', (msg) => {
                 Promise.resolve().then(() => {
-                    expect(msg.payload.complete.success).toBeDefined();
-                    expect(msg.payload.complete.failure).toBeDefined();
-                    expect(msg.payload.job).toBeDefined();
+                    expect(msg.payload.job.complete).toBeDefined();
+                    expect(msg.payload.job.fail).toBeDefined();
+                    expect(msg.payload.job.error).toBeDefined();
                     done();
                 });
             });

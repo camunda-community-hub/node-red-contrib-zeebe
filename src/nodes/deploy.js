@@ -7,15 +7,20 @@ module.exports = function (RED) {
 
         node.on('input', async function (msg) {
             this.zbc = RED.nodes.getNode(config.zeebe).zbc;
-
-            const { resourceName, definition } = msg.payload;
-
+            const { resourceType, resourceName, definition } = msg.payload;
+            let res;
             try {
-                const res = await this.zbc.deployWorkflow({
-                    definition: Buffer.from(definition),
-                    name: resourceName,
-                });
-
+                if (resourceType === 'process') {
+                    res = await this.zbc.deployResource({
+                        process: Buffer.from(definition),
+                        name: resourceName,
+                    });
+                } else if (resourceType === 'decision') {
+                    res = await this.zbc.deployResource({
+                        decision: Buffer.from(definition),
+                        name: resourceName,
+                    });
+                }
                 status.success(node, 'Deployed');
                 msg.payload = res;
                 node.send(msg);

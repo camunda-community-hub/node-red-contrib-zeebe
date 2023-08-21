@@ -1,12 +1,9 @@
-# node-red-contrib-zeebe
+# node-red-contrib-zeebe-2 (fork of node-red-contrib-zeebe, updated to zeebe-node 8.2.x)
+### (Work in progress)
 
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
+![Compatible with: Camunda Platform 8.2+](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%208-0072Ce)
 
-[![](https://img.shields.io/badge/Lifecycle-Incubating-blue)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#incubating-)
-
-![Compatible with: Camunda Platform 8](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%208-0072Ce)
-
-![npm](https://img.shields.io/npm/v/node-red-contrib-zeebe)
+![npm](https://img.shields.io/npm/v/node-red-contrib-zeebe-2)
 
 This module leverages the [zeebe-node](https://creditsenseau.github.io/zeebe-client-node-js/index.html) client library to bring Zeebe awesomeness to Node-RED!
 
@@ -99,7 +96,3 @@ And then run them manually:
 ```bash
 npm run test:integration
 ```
-
-## Contributions
-
-Contributions are always welcome! There are some [open issues](https://github.com/camunda-community-hub/node-red-contrib-zeebe/issues).

@@ -1,23 +1,17 @@
 {
-  "name": "node-red-contrib-zeebe",
-  "version": "0.8.0",
+  "name": "node-red-contrib-zeebe-2",
+  "version": "0.8.5",
   "description": "Zeebe nodes for Node-RED ",
   "main": "index.js",
   "scripts": {
     "test": "jest --testPathIgnorePatterns integration --forceExit --detectOpenHandles",
-    "test:integration": "jest --forceExit --detectOpenHandles",
-    "prepare": "husky install"
+    "test:integration": "jest --forceExit --detectOpenHandles"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camunda-community-hub/node-red-contrib-zeebe.git"
+    "url": "git+https://github.com/dfulgham/node-red-contrib-zeebe.git"
   },
-  "author": "pedesen",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/camunda-community-hub/node-red-contrib-zeebe/issues"
-  },
-  "homepage": "https://github.com/camunda-community-hub/node-red-contrib-zeebe#readme",
   "keywords": [
     "node-red",
     "zeebe",
@@ -27,7 +21,7 @@
     "microservice"
   ],
   "dependencies": {
-    "uuid": "^9.0.0",
+    "uuid": "^8.3.2",
     "zeebe-node": "^8.2.5"
   },
   "devDependencies": {
@@ -54,9 +48,6 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
+    "*.js": ["eslint --cache --fix", "prettier --write"]
   }
 }

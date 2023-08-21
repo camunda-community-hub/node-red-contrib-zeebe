@@ -3,15 +3,16 @@ const completeTaskNode = require('../src/nodes/complete-task.js');
 
 helper.init(require.resolve('node-red'));
 
-const completeMock = {
-    success: jest.fn(),
-    failure: jest.fn(),
+const jobMock = {
+    complete: jest.fn(),
+    fail: jest.fn(),
     error: jest.fn(),
+    variables: { workflowId: 123 }
 };
 
 describe('complete-task node', () => {
     beforeEach((done) => {
-        helper.startServer(done);
+         helper.startServer(done);
         jest.resetAllMocks();
     });
 
@@ -20,9 +21,7 @@ describe('complete-task node', () => {
         helper.stopServer(done);
     });
 
-    it('should call complete.success with variables', (done) => {
-        const variables = { workflowId: 123 };
-
+    it('should call job.complete with variables', (done) => {
         var flow = [
             {
                 id: 'n1',
@@ -33,17 +32,17 @@ describe('complete-task node', () => {
 
         helper.load([completeTaskNode], flow, () => {
             const n1 = helper.getNode('n1');
-
-            completeMock.success.mockImplementation(() => {
-                expect(completeMock.success).toHaveBeenCalledTimes(1);
-                expect(completeMock.success).toHaveBeenCalledWith(variables);
+            jobMock.complete.mockImplementation(() => {
+                expect(jobMock.complete).toHaveBeenCalledTimes(1);
+                expect(jobMock.complete).toHaveBeenCalledWith(jobMock.variables);
                 done();
             });
 
             n1.receive({
                 payload: {
-                    complete: completeMock,
-                    variables,
+                    job: jobMock,
+                    variables: jobMock.variables,
+                   
                 },
             });
         });
@@ -63,9 +62,9 @@ describe('complete-task node', () => {
 
             const n1 = helper.getNode('n1');
 
-            completeMock.failure.mockImplementation(() => {
-                expect(completeMock.failure).toHaveBeenCalledTimes(1);
-                expect(completeMock.failure).toHaveBeenCalledWith(
+            jobMock.fail.mockImplementation(() => {
+                expect(jobMock.fail).toHaveBeenCalledTimes(1);
+                expect(jobMock.fail).toHaveBeenCalledWith(
                     failureMessage
                 );
                 done();
@@ -73,7 +72,7 @@ describe('complete-task node', () => {
 
             n1.receive({
                 payload: {
-                    complete: completeMock,
+                    job: jobMock,
                     type: 'failure',
                     failureMessage,
                 },
@@ -96,21 +95,25 @@ describe('complete-task node', () => {
 
             const n1 = helper.getNode('n1');
 
-            completeMock.error.mockImplementation(() => {
-                expect(completeMock.error).toHaveBeenCalledTimes(1);
-                expect(completeMock.error).toHaveBeenCalledWith(
-                    errorCode,
-                    errorMessage
+            jobMock.error.mockImplementation(() => {
+                expect(jobMock.error).toHaveBeenCalledTimes(1);
+                expect(jobMock.error).toHaveBeenCalledWith(
+                    {
+                        errorCode,
+                        errorMessage,
+                        variables: jobMock.variables,
+                    }
                 );
                 done();
             });
 
             n1.receive({
                 payload: {
-                    complete: completeMock,
+                    job: jobMock,
                     type: 'error',
                     errorCode,
                     errorMessage,
+                    variables: jobMock.variables,
                 },
             });
         });

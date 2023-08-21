@@ -18,11 +18,11 @@ module.exports = function (RED) {
 
         status.warning(node, 'Connecting...');
 
-        const handler = (job, complete) => {
+        const handler = (job) => {
+            
             node.send({
                 payload: {
-                    job,
-                    complete,
+                    job
                 },
             });
         };
@@ -46,11 +46,11 @@ module.exports = function (RED) {
             workerOptions.timeout = config.timeout;
         }
 
-        const zbWorker = zbc.createWorker(
-            config.name, // worker name
-            config.taskType,
-            handler,
-            workerOptions
+        const zbWorker = zbc.createWorker({
+            taskType: config.taskType,
+            taskHandler: handler,
+            ...workerOptions,
+        }
         );
 
         node.on('close', () => {});
