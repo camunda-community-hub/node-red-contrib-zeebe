@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-zeebe-2",
-  "version": "0.8.5",
+
   "description": "Zeebe nodes for Node-RED ",
   "main": "index.js",
   "scripts": {
