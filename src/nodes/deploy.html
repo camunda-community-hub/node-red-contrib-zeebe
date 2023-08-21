@@ -27,13 +27,16 @@
 </script>
 
 <script type="text/x-red" data-help-name="deploy">
-    <p>Deploy a bpmn workflow to Zeebe</p>
+    <p>Deploy a bpmn resource (process or decision) to Zeebe</p>
 
     <h3>Inputs</h3>
 
     <dl class="message-properties">
+        <dt>payload.resourceType <span class="property-type">string</span></dt>
+        <dd>The type of resource process or decision</dd>
+
         <dt>payload.definition <span class="property-type">string</span></dt>
-        <dd>The workflow definition as a UTF8-encoded string</dd>
+        <dd>The process or decision definition as a UTF8-encoded string</dd>
 
         <dt>payload.resourceName <span class="property-type">string</span></dt>
         <dd>The workflow resource name (e.g. 'myWorkflow.bpmn')</dd>

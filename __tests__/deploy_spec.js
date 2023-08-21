@@ -15,7 +15,7 @@ describe('deploy node', () => {
         helper.stopServer(done);
     });
 
-    it('should call zbc.deployWorkflow', (done) => {
+    it('should call zbc.deployResource', (done) => {
         var flow = [
             {
                 id: 'n1',
@@ -42,22 +42,21 @@ describe('deploy node', () => {
 
             n3.on('input', (msg) => {
                 Promise.resolve().then(() => {
-                    expect(n1.zbc.deployWorkflow).toHaveBeenCalledTimes(1);
-                    expect(n1.zbc.deployWorkflow).toHaveBeenCalledWith(
+                    expect(n1.zbc.deployResource).toHaveBeenCalledTimes(1);
+                    expect(n1.zbc.deployResource).toHaveBeenCalledWith(
                         expect.objectContaining({
                             name: expect.stringMatching(/^test.bpmn$/),
-                            definition: expect.any(Buffer),
+                            process: expect.any(Buffer),
                         })
                     );
-                    expect(msg.payload).toEqual({
-                        workflows: [{ bpmnProcessId: 'my-process' }],
-                    });
+                    expect(msg.payload.bpmnProcessId).toEqual('my-process' )
                     done();
                 });
             });
 
             n2.receive({
                 payload: {
+                    resourceType: 'process',
                     definition: '<xml />',
                     resourceName: 'test.bpmn',
                 },

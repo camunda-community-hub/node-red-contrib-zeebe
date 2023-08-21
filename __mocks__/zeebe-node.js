@@ -1,27 +1,24 @@
-const mockJob = { key: '111', variables: {} };
-const mockComplete = {
-    success: jest.fn(),
-    failure: jest.fn(),
+const mockJob = { key: '111', variables: {} ,
+    complete: jest.fn(),
+    fail: jest.fn(),
     error: jest.fn(),
+    forward: jest.fn(),
 };
 
 exports.ZBClient = jest.fn().mockImplementation(() => {
     return {
-        createWorker: (
-            workerName,
+        createWorker: ({
             taskType,
-            handler,
-            workerOptions,
-            onConnectionError
-        ) => {
+            taskHandler,
+            ...workerOptions
+        }) => {
             // call the handler asynchronously right after ZBClient has been created
-            setTimeout(() => handler(mockJob, mockComplete));
+            setTimeout(() => taskHandler(mockJob));
         },
         publishMessage: jest.fn(),
         publishStartMessage: jest.fn(),
-        deployWorkflow: jest.fn().mockResolvedValue({
-            workflows: [{ bpmnProcessId: 'my-process' }],
-        }),
+        deployResource: jest.fn().mockResolvedValue({ bpmnProcessId: 'my-process' }),
+        
         createProcessInstance: jest.fn(),
         close: () => {},
     };

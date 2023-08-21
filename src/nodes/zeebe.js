@@ -9,23 +9,25 @@ module.exports = function (RED) {
         const node = this;
 
         const options = {
-            useTls: Boolean(config.useTls),
+            useTLS: Boolean(config.useTls),
+            eagerConnection:Boolean(config.eagerConnection),
             oAuth: {
                 url: config.oAuthUrl,
                 audience: config.contactPoint.split(':')[0],
                 clientId: config.clientId,
                 clientSecret: config.clientSecret,
                 cacheOnDisk: true,
+               
             },
             onReady: () => {
                 node.log(`Connected to ${config.contactPoint}`);
                 node.emit('ready');
             },
             onConnectionError: () => {
-                node.log('Connection Error');
+                node.log(`Connection Error`);
                 node.emit('connectionError');
             },
-            loglevel: 'ERROR',
+            loglevel: 'DEBUG',
             stdout: logger(node, RED.settings.logging),
         };
 

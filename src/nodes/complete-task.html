@@ -31,11 +31,17 @@
         <dt>payload.complete <span class="property-type">function</span></dt>
         <dd>A function from a <code>task-worker</code> which completes the corresponding task.</dd>
 
+        <dt>payload.fail <span class="property-type">function</span></dt>
+        <dd>A function from a <code>task-worker</code> which fails the corresponding task.</dd>
+
+        <dt>payload.error <span class="property-type">function</span></dt>
+        <dd>A function from a <code>task-worker</code> which errors the corresponding task.</dd>
+
         <dt>payload.variables <span class="property-type">object</span></dt>
         <dd>Message variables as JSON object</dd>
 
         <dt>payload.type <span class="property-type">string</span></dt>
-        <dd>Complete type. Can be either "success" or "failure". Defaults to "success"</dd>
+        <dd>Complete type. Can be either "success", "failure" or "error". Defaults to "success" this will trigger the corresponding function</dd>
 
         <dt>payload.failureMessage <span class="property-type">string</span></dt>
         <dd>Failure message, that will be returned to zeebe in case the complete type is "failure"</dd>
