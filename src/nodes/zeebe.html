@@ -8,6 +8,7 @@
                 required: true,
             },
             useTls: { value: true, required: false },
+            eagerConnection: { value: true, required: false },
             useLongpoll: { value: true, required: false },
             oAuthUrl: {
                 value: 'https://login.cloud.camunda.io/oauth/token',
@@ -35,6 +36,10 @@
     <div class="form-row">
         <label for="node-config-input-useTls"><i class="fa fa-lock"></i> TLS</label>
         <input type="checkbox" id="node-config-input-useTls">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-eagerConnection"><i class="fa fa-lock"></i> Eager Connection</label>
+        <input type="checkbox" id="node-config-input-eagerConnection">
     </div>
     <div class="form-row">
         <label for="node-config-input-useLongpoll"><i class="fa fa-lock"></i> Long Polling</label>

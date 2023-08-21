@@ -1,6 +1,6 @@
 {
-  "name": "node-red-contrib-zeebe",
-  "version": "0.8.0",
+  "name": "node-red-contrib-zeebe-2",
+  "version": "0.8.3",
   "description": "Zeebe nodes for Node-RED ",
   "main": "index.js",
   "scripts": {
@@ -9,14 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camunda-community-hub/node-red-contrib-zeebe.git"
+    "url": "git+https://github.com/dfulgham/node-red-contrib-zeebe.git"
   },
-  "author": "pedesen",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/camunda-community-hub/node-red-contrib-zeebe/issues"
-  },
-  "homepage": "https://github.com/camunda-community-hub/node-red-contrib-zeebe#readme",
   "keywords": [
     "node-red",
     "zeebe",
@@ -26,7 +21,7 @@
     "microservice"
   ],
   "dependencies": {
-    "uuid": "^9.0.0",
+    "uuid": "^8.3.2",
     "zeebe-node": "^8.2.5"
   },
   "devDependencies": {
